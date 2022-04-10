@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32328.378
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeliveryCrab", "DeliveryCrab\DeliveryCrab.csproj", "{F5323ABC-2E18-46DF-B50D-D2B0A227AB90}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F5323ABC-2E18-46DF-B50D-D2B0A227AB90}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5323ABC-2E18-46DF-B50D-D2B0A227AB90}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5323ABC-2E18-46DF-B50D-D2B0A227AB90}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5323ABC-2E18-46DF-B50D-D2B0A227AB90}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2334193B-7391-4BFC-8FA3-D30E46378CD5}
+	EndGlobalSection
+EndGlobal
