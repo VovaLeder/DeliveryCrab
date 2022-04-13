@@ -1,16 +1,13 @@
-/* You can add global styles to this file, and also import other style files */
-
-/* Provide sufficient contrast against white background */
-a {
-  color: #0366d6;
+@font-face{
+  font-family: Sponge Bob Ru Uk En ;
+  src: url('assets/font/1_Sponge_Bob_Ru_Uk_En_by_Ruslan_Chuchko.otf');
+}
+body{
+  background-image: url("assets/bg.jpg");
+  background-repeat: no-repeat;
+  margin: 0 auto;
+  background-size: cover;
+  background-attachment: fixed;
+  font-family: Sponge Bob Ru Uk En;
 }
 
-code {
-  color: #e01a76;
-}
-
-.btn-primary {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
-}
