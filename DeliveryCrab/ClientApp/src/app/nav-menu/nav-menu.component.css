@@ -1,3 +1,19 @@
 *{
   font-size: 40px;
 }
+
+.navbar-brand{
+  transition: transform .3s;
+  color:black;
+  text-decoration: none;
+}
+
+.navbar-brand:hover{
+  transform: scale(1.1);
+}
+li{
+  transition: transform .3s;
+}
+li:hover{
+  transform: scale(1.1);
+}

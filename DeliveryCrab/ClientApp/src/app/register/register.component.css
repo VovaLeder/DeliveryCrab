@@ -1,0 +1,40 @@
+*{
+  font-size: 30px;
+}
+.register_container{
+  width: 500px;
+  margin: 0 auto;
+}
+
+button{
+  transition: transform .2s;
+}
+button:hover{
+  transform: scale(1.1);
+}
+button:active{
+  transform: scale(0.9);
+}
+input{
+  background-image: url("/assets/i.jpg");
+  border: none;
+}
+.form-control{
+  color: white;
+}
+button{
+  background-image: url("/assets/i.jpg");
+  border: none;
+  color: white;
+  margin-bottom: 20px;
+  padding: 10px;
+  border-radius: 20px;
+}
+.form-text{
+  color: black;
+  font-size: 20px;
+}
+
+::placeholder{
+  color: wheat;
+}

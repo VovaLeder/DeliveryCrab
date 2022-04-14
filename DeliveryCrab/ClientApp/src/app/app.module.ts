@@ -4,9 +4,12 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
+
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 
 
@@ -15,6 +18,8 @@ import { HomeComponent } from './home/home.component';
     AppComponent,
     NavMenuComponent,
     HomeComponent,
+    LoginComponent,
+    RegisterComponent,
 
   ],
   imports: [
@@ -22,8 +27,11 @@ import { HomeComponent } from './home/home.component';
     HttpClientModule,
     FormsModule,
     RouterModule.forRoot([
-      {path: '', component: HomeComponent, pathMatch: 'full'}
-    ])
+      {path: '', component: HomeComponent, pathMatch: 'full'},
+      {path:'login', component: LoginComponent},
+      {path:'register', component: RegisterComponent}
+    ]),
+
 
   ],
   providers: [],
