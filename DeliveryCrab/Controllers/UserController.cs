@@ -41,7 +41,7 @@ namespace DeliveryCrab.Controllers
         }
 
         [HttpDelete]
-        [Route("GetUser")]
+        [Route("DeleteUser")]
         public IActionResult Delete(int id)
         {
             if (ModelState.IsValid)
@@ -53,7 +53,7 @@ namespace DeliveryCrab.Controllers
                     _context.SaveChanges();
                     return Ok(id);
                 }
-                return BadRequest();
+                return BadRequest(); // Честно хз, что отправлять, если пытаться удалить юзера, id которого нет, так что пока так
             }
             return BadRequest(ModelState);
         }
