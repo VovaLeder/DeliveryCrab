@@ -57,5 +57,24 @@ namespace DeliveryCrab.Controllers
             }
             return BadRequest(ModelState);
         }
+
+        [HttpPut]
+        [Route("PutUser")]
+        public IActionResult Put(User user)
+        {
+            if (ModelState.IsValid)
+            {
+                User old_user = _context.Users.First(x => x.Id == user.Id);
+                old_user.FirstName = user.FirstName;
+                old_user.LastName = user.LastName;
+                old_user.Age = user.Age;
+                old_user.Email = user.Email;
+                old_user.Password = user.Password;
+
+                _context.SaveChanges();
+                return Ok(user);
+            }
+            return BadRequest(ModelState);
+        }
     }
 }
