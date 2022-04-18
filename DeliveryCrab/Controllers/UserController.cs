@@ -1,7 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using DeliveryCrab.Models;
-using Microsoft.EntityFrameworkCore;
-
 namespace DeliveryCrab.Controllers
 {
     
@@ -17,21 +15,20 @@ namespace DeliveryCrab.Controllers
         }
 
         [HttpGet]
-        [Route("GetUser")]
         public IEnumerable<User> Get()
         {
             return _context.Users.ToList();
         }
         [HttpGet]
-        [Route("GetUser/{id}")]
+        [Route("{id}")]
         public User Get(int id)
         {
-            User user = _context.Users.FirstOrDefault(x => x.Id == id);
+            User? user = _context.Users.FirstOrDefault(x => x.Id == id);
             return user;
         }
 
         [HttpPost]
-        [Route("GetUser")]
+        [Route("PostUser")]
         public IActionResult Post(User user)
         {
             if (ModelState.IsValid)
