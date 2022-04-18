@@ -5,27 +5,25 @@ import { User } from './user';
 @Injectable()
 export class DataService {
 
-  private url = "https://localhost:44432/user/getusers";
-
-    constructor(private http: HttpClient) {
+  constructor(private http: HttpClient) {
     }
 
     getUsers() {
-        return this.http.get(this.url);
+        return this.http.get("https://localhost:44432/user/getuser");
     }
 
     getUser(id: number) {
-        return this.http.get(this.url + '/' + id);
+        return this.http.get("https://localhost:44432/user/getuser" + '/' + id);
     }
 
     createUser(user: User) {
-        return this.http.post(this.url, user);
+        return this.http.post("https://localhost:44432/user/getuser", user);
     }
     updateUser(user: User) {
 
-        return this.http.put(this.url, user);
+        return this.http.put("https://localhost:44432/user/getuser", user);
     }
     deleteUser(id: number) {
-        return this.http.delete(this.url + '/' + id);
+        return this.http.delete("https://localhost:44432/user/getuser" + '/' + id);
     }
 }

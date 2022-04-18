@@ -29,5 +29,18 @@ namespace DeliveryCrab.Controllers
             User user = _context.Users.FirstOrDefault(x => x.Id == id);
             return user;
         }
+
+        [HttpPost]
+        [Route("GetUser")]
+        public IActionResult Post(User user)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Users.Add(user);
+                _context.SaveChanges();
+                return Ok(user);
+            }
+            return BadRequest(ModelState);
+        }
     }
 }

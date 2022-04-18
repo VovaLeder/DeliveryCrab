@@ -9,20 +9,6 @@ namespace DeliveryCrab.Models
         {
             Database.EnsureCreated();   // создаем базу данных при первом обращении
         }
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<User>().HasData(
-                    new User { 
-                        Id = 1, 
-                        FirstName = "Василий", 
-                        LastName = "Малютин",
-                        Age = 22,
-                        Email = "maliutin.vas@yandex.ru",
-                        Login = "vasiliym",
-                        Password = "vas123987"
-                            }
-                    
-            );
-        }
+        
     }
 }

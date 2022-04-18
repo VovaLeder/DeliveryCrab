@@ -12,15 +12,14 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DeliveryCrab.Migrations
 {
     [DbContext(typeof(UserContext))]
-    [Migration("20220417105320_initial")]
+    [Migration("20220418075954_initial")]
     partial class initial
     {
-        /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.0-preview.3.22175.1")
+                .HasAnnotation("ProductVersion", "6.0.4")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
@@ -54,18 +53,6 @@ namespace DeliveryCrab.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Age = 22,
-                            Email = "maliutin.vas@yandex.ru",
-                            FirstName = "Василий",
-                            LastName = "Малютин",
-                            Login = "vasiliym",
-                            Password = "vas123987"
-                        });
                 });
 #pragma warning restore 612, 618
         }

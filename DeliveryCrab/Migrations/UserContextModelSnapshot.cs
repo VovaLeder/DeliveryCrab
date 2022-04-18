@@ -51,18 +51,6 @@ namespace DeliveryCrab.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Age = 22,
-                            Email = "maliutin.vas@yandex.ru",
-                            FirstName = "Василий",
-                            LastName = "Малютин",
-                            Login = "vasiliym",
-                            Password = "vas123987"
-                        });
                 });
 #pragma warning restore 612, 618
         }
