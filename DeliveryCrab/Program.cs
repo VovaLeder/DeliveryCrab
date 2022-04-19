@@ -1,8 +1,6 @@
-//Чтобы пояивлась бд нужно прописать в консоли диспетчера пакетов команды 
 //для миграции
 //Add-migration initial
 //Update-database
-// начальные данные
 using Microsoft.EntityFrameworkCore;
 using DeliveryCrab.Models;
 

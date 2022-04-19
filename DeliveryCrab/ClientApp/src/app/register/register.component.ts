@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { DataService } from '../data.service';
 import { User } from '../user';
-
-
 
 @Component({
   selector: 'app-register',
@@ -14,8 +13,7 @@ export class RegisterComponent implements OnInit {
     user: User = new User();
     users: User[] = [];
     tableMode: boolean = true;
-
-    constructor(private dataService: DataService) { }
+    constructor(private dataService: DataService, private router:Router) { }
 
     ngOnInit() {
       this.loadUsers();
@@ -37,9 +35,19 @@ export class RegisterComponent implements OnInit {
 editProduct(u: User) {
     this.user = u;
 }
+
+delete(u: User) {
+  this.dataService.deleteUser(u.id)
+      .subscribe(data => this.loadUsers());
+}
 cancel() {
     this.user = new User();
     this.tableMode = true;
+}
+
+goHome(){
+
+  this.router.navigate(['']);
 }
 
 }

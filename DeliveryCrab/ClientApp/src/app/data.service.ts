@@ -12,7 +12,7 @@ export class DataService {
         return this.http.get("https://localhost:44432/user");
     }
 
-    getUser(id: number) {
+    getUser(id: number | undefined) {
         return this.http.get("https://localhost:44432/user" + '/' + id);
     }
 
@@ -20,10 +20,9 @@ export class DataService {
         return this.http.post("https://localhost:44432/user/postuser", user);
     }
     updateUser(user: User) {
-
-        return this.http.put("https://localhost:44432/user/getuser", user);
+        return this.http.put("https://localhost:44432/user/putuser", user);
     }
-    deleteUser(id: number) {
-        return this.http.delete("https://localhost:44432/user/getuser" + '/' + id);
+    deleteUser(id: number| undefined) {
+        return this.http.delete("https://localhost:44432/user/deleteuser" + '/' + id);
     }
 }

@@ -2,29 +2,29 @@
   <form>
     <div class="mb-3">
       <label for="exampleInputFirstName" class="form-label">Имя</label>
-      <input type="text" [(ngModel)]="user.firstname" name="firstname" class="form-control" id="exampleFirstName">
+      <input type="text" [(ngModel)]="user.firstname" name="firstname" class="form-control" id="exampleInputFirstName">
     </div>
     <div class="mb-3">
       <label for="exampleInputLastName" class="form-label">Фамилия</label>
-      <input type="text" [(ngModel)]="user.lastname" name="lastname" class="form-control" id="exampleLastName">
+      <input type="text" [(ngModel)]="user.lastname" name="lastname" class="form-control" id="exampleInputLastName">
     </div>
     <div class="mb-3">
       <label for="exampleInputAge" class="form-label">Возраст</label>
-      <input type="number" [(ngModel)]="user.age" name="age" class="form-control" id="exampleAge">
+      <input type="number" [(ngModel)]="user.age" name="age" class="form-control" id="exampleInputAge">
     </div>
     <div class="mb-3">
-      <label for="exampleInputLogin1" class="form-label">Логин</label>
-      <input type="text" [(ngModel)]="user.login" name="login" class="form-control" id="exampleInputLogin1">
+      <label for="exampleInputLogin" class="form-label">Логин</label>
+      <input type="text" [(ngModel)]="user.login" name="login" class="form-control" id="exampleInputLogin">
     </div>
     <div class="mb-3">
-      <label for="exampleInputEmail1" class="form-label">Почта</label>
-      <input type="email" [(ngModel)]="user.email" name="email" class="form-control" id="exampleInputEmail1" placeholder="name@example.com">
+      <label for="exampleInputEmail" class="form-label">Почта</label>
+      <input type="email" [(ngModel)]="user.email" name="email" class="form-control" id="exampleInputEmail" placeholder="name@example.com">
       <div id="emailHelp" class="form-text">Мы никому не сообщим вашу почту.</div>
     </div>
     <div class="mb-3">
-      <label for="exampleInputPassword1" class="form-label">Пароль</label>
-      <input type="password" [(ngModel)]="user.password" name="password" class="form-control" id="exampleInputPassword1">
+      <label for="exampleInputPassword" class="form-label">Пароль</label>
+      <input type="password" [(ngModel)]="user.password" name="password" class="form-control" id="exampleInputPassword">
     </div>
-    <button type="submit" (click)="save()">Зарегистрироваться</button>
+    <button type="submit" (click)="save(); goHome()" >Зарегистрироваться</button>
   </form>
 </div>
