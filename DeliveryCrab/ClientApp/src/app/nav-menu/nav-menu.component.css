@@ -17,3 +17,22 @@ li{
 li:hover{
   transform: scale(1.1);
 }
+button{
+  transition: transform .2s;
+}
+button:hover{
+  transform: scale(1.1);
+}
+button:active{
+  transform: scale(0.9);
+}
+button{
+  background-image: url("/assets/i.jpg");
+  border: none;
+  color: white;
+  border-radius: 20px;
+  text-align: center;
+}
+p{
+  margin-right: 10px;
+}

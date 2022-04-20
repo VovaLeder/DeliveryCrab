@@ -7,6 +7,8 @@ export class DataService {
 
   constructor(private http: HttpClient) {
     }
+    name:string|undefined = '';
+    isAuthorization: boolean|undefined;
 
     getUsers() {
         return this.http.get("https://localhost:44432/user");

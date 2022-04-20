@@ -7,13 +7,14 @@ import { User } from '../user';
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css'],
-  providers: [DataService]
 })
 export class RegisterComponent implements OnInit {
     user: User = new User();
     users: User[] = [];
     tableMode: boolean = true;
-    constructor(private dataService: DataService, private router:Router) { }
+
+
+    constructor(public dataService: DataService, private router:Router) { }
 
     ngOnInit() {
       this.loadUsers();
@@ -26,6 +27,8 @@ export class RegisterComponent implements OnInit {
     if (this.user.id == null) {
         this.dataService.createUser(this.user)
             .subscribe((data: User) => this.users.push(data));
+        this.dataService.isAuthorization = true
+        this.dataService.name = this.user?.firstname
     } else {
         this.dataService.updateUser(this.user)
             .subscribe(data => this.loadUsers());
@@ -44,9 +47,7 @@ cancel() {
     this.user = new User();
     this.tableMode = true;
 }
-
 goHome(){
-
   this.router.navigate(['']);
 }
 

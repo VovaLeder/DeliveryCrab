@@ -3,9 +3,17 @@
     <div class="container">
       <a class="navbar-brand" [routerLink]="['/']"><img src="assets/icons/icons_bob.svg" alt=""> DeliveryCrab</a>
       <div class="navbar-collapse collapse d-sm-inline-flex justify-content-end">
-        <ul class="navbar-nav flex-grow">
+        <ul class="navbar-nav flex-grow" *ngIf="dataService.isAuthorization">
+          <li class="nav-item">
+            <p>Привет, {{dataService.name}}</p>
+          </li>
+          <li class="nav-item">
+            <button class="exit" type="submit" (click)="exit()">Выход</button>
+          </li>
+        </ul>
+        <ul class="navbar-nav flex-grow" *ngIf="!dataService.isAuthorization">
           <li class="nav-item" [routerLinkActive]="['link-active']">
-            <a class="nav-link text-dark" [routerLink]="['/login']"><img src="assets/icons/login_icon.svg" alt=""> Войти</a>
+            <a class="nav-link text-dark" [routerLink]="['/login']"><img src="assets/icons/login_icon.svg" alt="">Войти</a>
           </li>
           <li class="nav-item" [routerLinkActive]="['link-active']">
             <a class="nav-link text-dark" [routerLink]="['/register']"><img src="assets/icons/register_icon.svg" alt=""> Регистрация</a>

@@ -1,13 +1,16 @@
 <div class="login_container">
   <form>
     <div class="mb-3">
+      {{error_login}}
+    </div>
+    <div class="mb-3">
       <label for="exampleInputLogin1" class="form-label">Логин</label>
-      <input type="text" class="form-control" id="exampleInputLogin1">
+      <input type="text" [(ngModel)]="login" name="login" class="form-control" id="exampleInputLogin1">
     </div>
     <div class="mb-3">
       <label for="exampleInputPassword1" class="form-label">Пароль</label>
-      <input type="password" class="form-control" id="exampleInputPassword1">
+      <input type="password" [(ngModel)]="password" name="password" class="form-control" id="exampleInputPassword1">
     </div>
-    <button type="submit">Войти</button>
+    <button type="submit" (click)="log()">Войти</button>
   </form>
 </div>
