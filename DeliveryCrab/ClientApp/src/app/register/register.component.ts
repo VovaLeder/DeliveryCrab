@@ -23,12 +23,19 @@ export class RegisterComponent implements OnInit {
     this.dataService.getUsers()
       .subscribe((data:any)=>this.users = data as User[])
   }
+
   save() {
     if (this.user.id == null) {
         this.dataService.createUser(this.user)
             .subscribe((data: User) => this.users.push(data));
         this.dataService.isAuthorization = true
-        this.dataService.name = this.user?.firstname
+        this.dataService.log_user.firstname = this.user?.firstname
+        this.dataService.log_user.lastname = this.user?.lastname
+        this.dataService.log_user.age = this.user?.age
+        this.dataService.log_user.login = this.user?.login
+        this.dataService.log_user.email = this.user?.email
+        this.dataService.log_user.password = this.user?.password
+
     } else {
         this.dataService.updateUser(this.user)
             .subscribe(data => this.loadUsers());

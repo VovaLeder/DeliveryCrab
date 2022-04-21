@@ -7,7 +7,7 @@ export class DataService {
 
   constructor(private http: HttpClient) {
     }
-    name:string|undefined = '';
+    log_user:User = new User();
     isAuthorization: boolean|undefined;
 
     getUsers() {
@@ -25,6 +25,6 @@ export class DataService {
         return this.http.put("https://localhost:44432/user/putuser", user);
     }
     deleteUser(id: number| undefined) {
-        return this.http.delete("https://localhost:44432/user/deleteuser" + '/' + id);
+        return this.http.delete("https://localhost:44432/user/deleteuser/?id=" + id);
     }
 }

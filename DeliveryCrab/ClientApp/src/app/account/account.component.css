@@ -1,0 +1,30 @@
+.account_info{
+  margin: 0 auto;
+  text-align: center;
+}
+ul{
+  width: 450px;
+  margin: 0 auto;
+  text-align: left;
+}
+li{
+  font-size: 28px;
+  background-image: url("/assets/i.jpg");
+  color: white;
+}
+button{
+  transition: transform .2s;
+}
+button:hover{
+  transform: scale(1.1);
+}
+button:active{
+  transform: scale(0.9);
+}
+button{
+  background-image: url("/assets/i.jpg");
+  border: none;
+  color: white;
+  padding: 10px;
+  border-radius: 20px;
+}

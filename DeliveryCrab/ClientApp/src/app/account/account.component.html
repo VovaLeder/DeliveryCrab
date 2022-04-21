@@ -1,0 +1,12 @@
+<div class="account_info">
+  <h2>Личная информация пользователя</h2>
+    <ul class="list-group">
+      <li class="list-group-item">Имя: {{dataService.log_user.firstname}}</li>
+      <li class="list-group-item">Фамилия: {{dataService.log_user.lastname}}</li>
+      <li class="list-group-item">Возраст: {{dataService.log_user.age}}</li>
+      <li class="list-group-item">Логин: {{dataService.log_user.login}}</li>
+      <li class="list-group-item">Почта: {{dataService.log_user.email}}</li>
+      <li class="list-group-item">Пароль: {{dataService.log_user.password}}</li>
+    </ul>
+  <button class="delete" type="submit" (click)="delete(dataService.log_user)">Удалить аккаунт</button>
+</div>
