@@ -1,0 +1,2 @@
+﻿cd C:\Program Files\PostgreSQL\14\bin
+pg_dump -h localhost -p 5432 -U postgres dcrab > C:\Users\342\source\repos\DeliveryCrab\DeliveryCrab\DB\dump.sql
