@@ -12,6 +12,8 @@ ConfigurationManager configuration = builder.Configuration;
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<UserContext>(options => options.UseNpgsql(Connection.GetConnectionString()));
+builder.Services.AddDbContext<ProductContext>(options => options.UseNpgsql(Connection.GetConnectionString()));
+builder.Services.AddDbContext<RestaurantContext>(options => options.UseNpgsql(Connection.GetConnectionString()));
 
 var app = builder.Build();
 // Configure the HTTP request pipeline.
