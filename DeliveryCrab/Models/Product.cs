@@ -1,17 +1,16 @@
 ﻿namespace DeliveryCrab.Models
 {
-    public class Restaurant
+    public class Product
     {
         public int Id { get; set; }
         public string Name { get; set; }
         public string Icon { get; set; }
-        public User Owner { get; set; }
+        public int RestaurantId { get; set; }
 
-        public List<Product> Products { get; set; }
-
-        public Restaurant(User owner)
+        public Product(Restaurant restaurant)
         {
-            Owner = owner;
+            RestaurantId = restaurant.Id;
         }
+        
     }
 }
