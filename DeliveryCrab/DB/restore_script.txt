@@ -1,4 +1,0 @@
-﻿cd C:\Program Files\PostgreSQL\14\bin
-psql -h localhost -p 5432 -U postgres -c "drop database dcrab;"
-psql -h localhost -p 5432 -U postgres -c "create database dcrab with owner postgres;"
-psql -h localhost -p 5432 -U postgres -d dcrab < C:\Users\342\source\repos\DeliveryCrab\DeliveryCrab\DB\dump.sql
