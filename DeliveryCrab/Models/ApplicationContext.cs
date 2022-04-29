@@ -9,7 +9,7 @@ namespace DeliveryCrab.Models
         public ApplicationContext(DbContextOptions<ApplicationContext> options)
             : base(options)
         {
-            Database.EnsureDeleted();//Чтоб работала регистрация на сессии, нужно закомментить удаление бд)
+            /*Database.EnsureDeleted()*/;//Чтоб работала регистрация на сессии, нужно закомментить удаление бд)
             Database.EnsureCreated();
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)

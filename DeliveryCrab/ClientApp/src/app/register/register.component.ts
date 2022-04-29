@@ -11,9 +11,6 @@ import { User } from '../user';
 export class RegisterComponent implements OnInit {
     user: User = new User();
     users: User[] = [];
-    tableMode: boolean = true;
-
-
     constructor(public dataService: DataService, private router:Router) { }
 
     ngOnInit() {
@@ -35,18 +32,6 @@ export class RegisterComponent implements OnInit {
         this.dataService.log_user.login = this.user?.login
         this.dataService.log_user.email = this.user?.email
         this.dataService.log_user.password = this.user?.password
-}
-editProduct(u: User) {
-    this.user = u;
-}
-
-delete(u: User) {
-  this.dataService.deleteUser(u.id)
-      .subscribe(data => this.loadUsers());
-}
-cancel() {
-    this.user = new User();
-    this.tableMode = true;
 }
 goHome(){
   this.router.navigate(['']);

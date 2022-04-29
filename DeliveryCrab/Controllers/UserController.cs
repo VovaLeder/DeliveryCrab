@@ -67,6 +67,7 @@ namespace DeliveryCrab.Controllers
                 User old_user = _context.Users.First(x => x.Id == user.Id);
                 old_user.Firstname = user.Firstname;
                 old_user.Lastname = user.Lastname;
+                old_user.Login = user.Login;
                 old_user.Age = user.Age;
                 old_user.Email = user.Email;
                 old_user.Password = user.Password;
