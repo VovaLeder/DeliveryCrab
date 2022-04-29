@@ -9,25 +9,22 @@ namespace DeliveryCrab.Models
         public ApplicationContext(DbContextOptions<ApplicationContext> options)
             : base(options)
         {
-            Database.EnsureDeleted();
-            Database.EnsureCreated();   
+            Database.EnsureDeleted();//Чтоб работала регистрация на сессии, нужно закомментить удаление бд)
+            Database.EnsureCreated();
         }
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<User>().HasData(
                 new User[]
                 {
-                    new User {Id = 1, Firstname="Tom", Lastname="q", Age=12, Login="as", Email="a@a.a", Password="pass"},
-                    new User {Id = 2, Firstname="Toma", Lastname="qa", Age=122, Login="asa", Email="a@a.aa", Password="passa"},
-                    new User {Id = 3, Firstname="Toms", Lastname="qs", Age=122, Login="ass", Email="a@a.as", Password="passs"},
-                    new User {Id = 4, Firstname="Toms", Lastname="qs", Age=122, Login="aass", Email="a@a.as", Password="passs"}
+                    new User {Id = 1, Firstname="Василий", Lastname="Малютин", Age=23, Login="vasiliym", Email="maliutin.vas@yandex.ru", Password="vas123987"},
+                    
                 });
 
             modelBuilder.Entity<Restaurant>().HasData(
                 new Restaurant[]
                 {
-                    new Restaurant {Id = 1, Name="CCrabs", Icon="icon.png", Address="adress", UserId=1},
+                    new Restaurant {Id = 1, Name="CCrabs", Icon="icon.png", Address="adress", Userid=1},
                 });
 
 

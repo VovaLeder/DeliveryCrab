@@ -1,3 +1,5 @@
+import { Restaraunt } from "./restaraunt";
+
 export class User{
   constructor(
     public id?:number,
@@ -6,6 +8,7 @@ export class User{
     public age?:number,
     public login?:string,
     public email?:string,
-    public password?:string
+    public password?:string,
+    public restaurants?:Array<Restaraunt>
   ){}
 }

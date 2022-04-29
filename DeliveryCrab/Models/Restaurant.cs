@@ -6,10 +6,10 @@
         public string Name { get; set; }
         public string Icon { get; set; }
         public string Address { get; set; }
-        public int UserId { get; set; } // внешний ключ (т.к отсутсвует НС для User
+        public int Userid { get; set; } // внешний ключ (т.к отсутсвует НС для User
                                         // при удалении User Restaurant должен остаться)
 
-        public List<Product> Products { get; set; } // навигационное свойство(НС)
+        public List<Product> Products { get; set; } = new();// навигационное свойство(НС)
 
     }
 }

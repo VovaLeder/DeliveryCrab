@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { DataService } from '../data.service';
+import { DataService } from '../user.service';
 import { User } from '../user';
 
 @Component({
@@ -25,7 +25,7 @@ export class RegisterComponent implements OnInit {
   }
 
   save() {
-    if (this.user.id == null) {
+
         this.dataService.createUser(this.user)
             .subscribe((data: User) => this.users.push(data));
         this.dataService.isAuthorization = true
@@ -35,12 +35,6 @@ export class RegisterComponent implements OnInit {
         this.dataService.log_user.login = this.user?.login
         this.dataService.log_user.email = this.user?.email
         this.dataService.log_user.password = this.user?.password
-
-    } else {
-        this.dataService.updateUser(this.user)
-            .subscribe(data => this.loadUsers());
-    }
-    this.cancel();
 }
 editProduct(u: User) {
     this.user = u;
