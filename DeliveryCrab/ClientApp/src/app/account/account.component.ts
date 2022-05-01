@@ -32,8 +32,9 @@ edit(u: User){
 }
 save(){
   this.dataService.updateUser(this.user)
-                .subscribe(data => this.loadUsers());
-  this.editMode = false;
+    .subscribe(data => this.loadUsers());
   this.user = new User();
+  this.editMode = false;
+
 }
 }

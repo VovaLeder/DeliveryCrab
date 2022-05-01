@@ -64,10 +64,9 @@ namespace DeliveryCrab.Controllers
         {
             if (ModelState.IsValid)
             {
-                User old_user = _context.Users.First(x => x.Id == user.Id);
+                User old_user = _context.Users.First(x => x.Login == user.Login);
                 old_user.Firstname = user.Firstname;
                 old_user.Lastname = user.Lastname;
-                old_user.Login = user.Login;
                 old_user.Age = user.Age;
                 old_user.Email = user.Email;
                 old_user.Password = user.Password;
