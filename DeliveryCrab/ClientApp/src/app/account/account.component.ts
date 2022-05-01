@@ -34,5 +34,6 @@ save(){
   this.dataService.updateUser(this.user)
                 .subscribe(data => this.loadUsers());
   this.editMode = false;
+  this.user = new User();
 }
 }
