@@ -69,7 +69,6 @@ namespace DeliveryCrab.Controllers
                 old_restaurant.Name = restaurant.Name;
                 old_restaurant.Icon = restaurant.Icon;
                 old_restaurant.Address = restaurant.Address;
-                old_restaurant.Userid = restaurant.Userid;
 
                 _context.SaveChanges();
                 return Ok(restaurant);

@@ -67,7 +67,7 @@ namespace DeliveryCrab.Controllers
                 Product old_product = _context.Products.First(x => x.Id == product.Id);
                 old_product.Id = product.Id;
                 old_product.Name = product.Name;
-                old_product.Icon = product.Icon;
+                old_product.Image = product.Image;
                 old_product.Price = product.Price;
                 old_product.Description = product.Description;
                 old_product.RestaurantId = product.RestaurantId;

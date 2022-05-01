@@ -9,28 +9,37 @@ namespace DeliveryCrab.Models
         public ApplicationContext(DbContextOptions<ApplicationContext> options)
             : base(options)
         {
-            /*Database.EnsureDeleted()*/;//Чтоб работала регистрация на сессии, нужно закомментить удаление бд)
             Database.EnsureCreated();
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+
+            var CrustyCrabs = new Restaurant { Id = 1, Name = "Красти Крабс", Icon = "assets/icons/icons_chum_bucket.png", Address = "КрабсСтрит/1" };
+            var ChumBucket = new Restaurant { Id = 2, Name = "Чам Баккет", Icon = "assets/icons/icons_crusty_crabs.png", Address = "БаккетСтрит/1" };
+
+
             modelBuilder.Entity<User>().HasData(
                 new User[]
-                {
-                    new User {Id = 1, Firstname="Василий", Lastname="Малютин", Age=23, Login="vasiliym", Email="maliutin.vas@yandex.ru", Password="vas123987"},
+                {               
                     
                 });
 
             modelBuilder.Entity<Restaurant>().HasData(
                 new Restaurant[]
                 {
-                    new Restaurant {Id = 1, Name="CCrabs", Icon="icon.png", Address="adress", Userid=1},
+                    CrustyCrabs,
+                    ChumBucket
                 });
 
 
             modelBuilder.Entity<Product>().HasData(
                 new Product[] {
-                    new Product {Id = 1, Name="Burger", Icon="icon.png", Price=3,Description="Tasty", RestaurantId=1}
+                    new Product {Id = 1, Name="Крабсбургер", Image="assets/images/crabsburger.png", Price=3,Description="Вкусно", RestaurantId=1},
+                    new Product {Id = 2, Name="Чамбургер", Image="assets/images/chumburger.png", Price=2.79F,Description="Чамбургер содержит бледно-бежевый чам, зажатый между булочками с кунжутом.", RestaurantId=2},
+                    new Product {Id = 3, Name="Чам", Image="assets/images/chum.png", Price=0.99F,Description="Смесь всякой гнили тёмно-красного цвета", RestaurantId=2},
+                    new Product {Id = 4, Name="Чам Стикс", Image="assets/images/chum_sticks.png", Price=2.00F,Description="Чам на палочке - известны своим отвратительным вкусом.", RestaurantId=2},
+                    new Product {Id = 5, Name="Чам Наггетсы", Image="assets/images/chum_nuggets.png", Price=2.00F,Description="Маленькие кусочки чама овальной формы", RestaurantId=2},
+                    new Product {Id = 6, Name="Чам Фрикасе", Image="assets/images/chum_fricassee.png", Price=5.00F,Description="Блюдо выглядит как обычный кусок чама, только имеет объёмную круглую форму и на вкус лучше, чем обычный чам. Его подают на маленькой круглой тарелке. Состоит из чама и секретной смеси из приправ и специй Бабушки Тэнтеклс.", RestaurantId=2},
                 }
                 );
 
