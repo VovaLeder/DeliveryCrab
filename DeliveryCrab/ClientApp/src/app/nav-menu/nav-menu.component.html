@@ -3,18 +3,24 @@
     <div class="container">
       <a class="navbar-brand" [routerLink]="['/']"><img src="assets/icons/icons_bob.svg" alt=""> DeliveryCrab</a>
       <div class="navbar-collapse collapse d-sm-inline-flex justify-content-end">
-        <ul class="navbar-nav flex-grow" *ngIf="dataService.isAuthorization">
+        <ul class="navbar-nav flex-grow" *ngIf="userService.isAuthorization">
+          <li class="nav-item" [routerLinkActive]="['link-active']">
+            <a class="nav-link text-dark" [routerLink]="['/restaurants']">Рестораны</a>
+          </li>
           <li class="nav-item">
-            <p>Привет, {{dataService.log_user.firstname}}</p>
+            <p>Привет, {{userService.log_user.firstname}}</p>
           </li>
           <li class="nav-item" [routerLinkActive]="['link-active']">
-            <a class="nav-link text-dark" [routerLink]="['account']" >Личный кабинет</a>
+            <a class="nav-link text-dark" [routerLink]="['/account']">Личный кабинет</a>
           </li>
           <li class="nav-item">
             <button class="exit" type="submit" (click)="exit()">Выход</button>
           </li>
         </ul>
-        <ul class="navbar-nav flex-grow" *ngIf="!dataService.isAuthorization">
+        <ul class="navbar-nav flex-grow" *ngIf="!userService.isAuthorization">
+          <li class="nav-item" [routerLinkActive]="['link-active']">
+            <a class="nav-link text-dark" [routerLink]="['/restaurants']">Рестораны</a>
+          </li>
           <li class="nav-item" [routerLinkActive]="['link-active']">
             <a class="nav-link text-dark" [routerLink]="['/login']"><img src="assets/icons/login_icon.svg" alt="">Войти</a>
           </li>

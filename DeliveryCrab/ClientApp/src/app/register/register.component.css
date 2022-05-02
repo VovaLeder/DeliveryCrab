@@ -38,3 +38,6 @@ button{
 ::placeholder{
   color: wheat;
 }
+.error{
+  color: red;
+}

@@ -1,0 +1,16 @@
+<div *ngFor="let rest of chumbucket">
+  <div class="container" *ngIf="rest.id === 2">
+    <h1>{{rest.name}}</h1>
+    <h2>Адресс - {{rest.address}}</h2>
+    <h3>Меню:</h3>
+    <div *ngFor="let p of product">
+      <div class="menu" *ngIf="p.restaurantid === 2">
+        <div>
+          <img src="{{p.image}}" alt="Изображение">
+          <h4>{{p.name}} - {{p.description}}</h4>
+          <h4>Цена {{p.price}} доллара</h4>
+        </div>
+      </div>
+  </div>
+  </div>
+</div>

@@ -2,34 +2,51 @@
   <h2>Личная информация пользователя</h2>
   <div class="info" *ngIf="!editMode">
       <ul class="list-group">
-        <li class="list-group-item">Имя: {{dataService.log_user.firstname}}</li>
-        <li class="list-group-item">Фамилия: {{dataService.log_user.lastname}}</li>
-        <li class="list-group-item">Возраст: {{dataService.log_user.age}}</li>
-        <li class="list-group-item">Логин: {{dataService.log_user.login}}</li>
-        <li class="list-group-item">Почта: {{dataService.log_user.email}}</li>
-        <li class="list-group-item">Пароль: {{dataService.log_user.password}}</li>
+        <li class="list-group-item">Имя: {{userService.log_user.firstname}}</li>
+        <li class="list-group-item">Фамилия: {{userService.log_user.lastname}}</li>
+        <li class="list-group-item">Возраст: {{userService.log_user.age}}</li>
+        <li class="list-group-item">Логин: {{userService.log_user.login}}</li>
+        <li class="list-group-item">Почта: {{userService.log_user.email}}</li>
+        <li class="list-group-item">Пароль: {{userService.log_user.password}}</li>
       </ul>
-    <button class="delete" type="submit" (click)="delete(dataService.log_user)">Удалить аккаунт</button>
-    <button class="edit" type="submit" (click)="edit(dataService.log_user)">Изменить аккаунт</button>
+    <button class="delete" type="submit" (click)="delete(userService.log_user)">Удалить аккаунт</button>
+    <button class="edit" type="submit" (click)="edit(userService.log_user)">Изменить аккаунт</button>
   </div>
   <div class="edit" *ngIf="editMode">
-    <ul class="list-group">
-      <li class="list-group-item">
-        Имя: <input type="text" class="form-control" [(ngModel)]="user.firstname" name="firstname">
-      </li>
-      <li class="list-group-item">
-        Фамилия: <input type="text" class="form-control" [(ngModel)]="user.lastname" name="lastname">
-      </li>
-      <li class="list-group-item">
-        Возраст: <input type="text" class="form-control" [(ngModel)]="user.age" name="age">
-      </li>
-      <li class="list-group-item">
-        Почта: <input type="text" class="form-control" [(ngModel)]="user.email" name="email">
-      </li>
-      <li class="list-group-item">
-        Пароль: <input type="text" class="form-control" [(ngModel)]="user.password" name="password">
-      </li>
-    </ul>
-    <button class="edit-save" type="submit" (click)="save()">Сохранить</button>
+    <form [formGroup]="formsEdit" (submit)="save()">
+      <ul class="list-group">
+        <li class="list-group-item">
+          Имя: <input type="text" class="form-control" [(ngModel)]="user.firstname" name="firstname" formControlName="firstname">
+          <div class="error" *ngIf="isControlInvalid('firstname')">
+            Введите имя
+          </div>
+        </li>
+        <li class="list-group-item">
+          Фамилия: <input type="text" class="form-control" [(ngModel)]="user.lastname" name="lastname" formControlName="lastname">
+          <div class="error" *ngIf="isControlInvalid('lastname')">
+            Введите фамилию
+          </div>
+        </li>
+        <li class="list-group-item">
+          Возраст: <input type="text" class="form-control" [(ngModel)]="user.age" name="age" formControlName="age">
+          <div class="error" *ngIf="isControlInvalid('age')">
+            Введите корректный возраст
+          </div>
+        </li>
+        <li class="list-group-item">
+          Почта: <input type="text" class="form-control" [(ngModel)]="user.email" name="email" formControlName="email">
+          <div class="error" *ngIf="isControlInvalid('email')">
+            Введите корректный email
+          </div>
+        </li>
+        <li class="list-group-item">
+          Пароль: <input type="text" class="form-control" [(ngModel)]="user.password" name="password" formControlName="password">
+          <div class="error" *ngIf="isControlInvalid('password')">
+            Введите пароль
+          </div>
+        </li>
+      </ul>
+      <button class="edit-save" type="submit">Сохранить</button>
+  </form>
   </div>
 </div>

@@ -8,7 +8,7 @@
         public float Price { get; set; }
         public string Description { get; set; }
 
-        public int RestaurantId { get; set; } // внешний ключ
+        public int Restaurantid { get; set; } // внешний ключ
         public Restaurant? Restaurant { get; set; }  // навигационное свойство(добавляет каскадное удаление)
         
     }

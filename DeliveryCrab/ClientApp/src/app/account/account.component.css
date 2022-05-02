@@ -39,3 +39,7 @@ input{
 .form-control{
   color: white;
 }
+
+.error{
+  color: red;
+}

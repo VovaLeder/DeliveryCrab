@@ -70,7 +70,7 @@ namespace DeliveryCrab.Controllers
                 old_product.Image = product.Image;
                 old_product.Price = product.Price;
                 old_product.Description = product.Description;
-                old_product.RestaurantId = product.RestaurantId;
+                old_product.Restaurantid = product.Restaurantid;
 
                 _context.SaveChanges();
                 return Ok(product);

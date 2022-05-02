@@ -1,0 +1,12 @@
+*{
+  font-size: 40px;
+}
+.container{
+  display: flex;
+}
+a{
+  transition: transform .3s;
+}
+a:hover{
+  transform: scale(1.1);
+}

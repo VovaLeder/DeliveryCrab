@@ -1,13 +1,12 @@
-import { getLocaleMonthNames } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { DataService } from '../user.service';
-import { User } from '../user';
+import { UserService } from '../service/user.service';
+import { User } from '../models/user';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
   user: User = new User();
@@ -23,13 +22,13 @@ export class LoginComponent implements OnInit {
   list_password:Array<any> = [];
 
   error_login:string = '';
-  constructor(public dataService: DataService, private router:Router) { }
+  constructor(public userService: UserService, private router:Router) { }
 
   ngOnInit(): void {
     this.loadUsers()
   }
   loadUsers() {
-    this.dataService.getUsers()
+    this.userService.getUsers()
       .subscribe((data:any)=>this.users = data as User[])
   }
   log(){
@@ -45,14 +44,14 @@ export class LoginComponent implements OnInit {
     }
     for (let i=0;i<this.list_login.length;i++){
       if(this.login == this.list_login[i] && this.password == this.list_password[i]){
-        this.dataService.log_user.id = this.list_id[i];
-        this.dataService.log_user.firstname = this.list_firstnames[i];
-        this.dataService.log_user.lastname = this.list_lastnames[i];
-        this.dataService.log_user.age = this.list_ages[i];
-        this.dataService.log_user.login = this.list_login[i];
-        this.dataService.log_user.email = this.list_email[i];
-        this.dataService.log_user.password = this.list_password[i];
-        this.dataService.isAuthorization = true;
+        this.userService.log_user.id = this.list_id[i];
+        this.userService.log_user.firstname = this.list_firstnames[i];
+        this.userService.log_user.lastname = this.list_lastnames[i];
+        this.userService.log_user.age = this.list_ages[i];
+        this.userService.log_user.login = this.list_login[i];
+        this.userService.log_user.email = this.list_email[i];
+        this.userService.log_user.password = this.list_password[i];
+        this.userService.isAuthorization = true;
         this.goHome();
       }else{
         this.error_login = "Неправильный логин или пароль!!!";

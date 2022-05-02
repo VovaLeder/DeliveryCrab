@@ -1,30 +1,49 @@
 <div class="register_container" >
-  <form>
+  <form [formGroup]="formsReg" (submit)="save()">
     <div class="mb-3">
       <label for="exampleInputFirstName" class="form-label">Имя</label>
-      <input type="text" [(ngModel)]="user.firstname" name="firstname" class="form-control" id="exampleInputFirstName">
+      <input type="text" [(ngModel)]="user.firstname" name="firstname" class="form-control" formControlName="firstname" id="exampleInputFirstName">
+      <div class="error" *ngIf="isControlInvalid('firstname')">
+        Введите имя
+      </div>
     </div>
     <div class="mb-3">
       <label for="exampleInputLastName" class="form-label">Фамилия</label>
-      <input type="text" [(ngModel)]="user.lastname" name="lastname" class="form-control" id="exampleInputLastName">
+      <input type="text" [(ngModel)]="user.lastname" name="lastname" class="form-control" formControlName="lastname" id="exampleInputLastName">
+      <div class="error" *ngIf="isControlInvalid('lastname')">
+        Введите фамилию
+      </div>
     </div>
     <div class="mb-3">
       <label for="exampleInputAge" class="form-label">Возраст</label>
-      <input type="number" [(ngModel)]="user.age" name="age" class="form-control" id="exampleInputAge">
+      <input type="number" [(ngModel)]="user.age" name="age" min="0" required class="form-control" formControlName="age" id="exampleInputAge">
+      <div class="error" *ngIf="isControlInvalid('age')">
+        Введите корректный возраст
+      </div>
     </div>
     <div class="mb-3">
       <label for="exampleInputLogin" class="form-label">Логин</label>
-      <input type="text" [(ngModel)]="user.login" name="login" class="form-control" id="exampleInputLogin">
+      <input type="text" [(ngModel)]="user.login" name="login" class="form-control" formControlName="login" id="exampleInputLogin">
+      <div id="loginHelp" class="form-text">Логин неизменяемый!!!</div>
+      <div class="error" *ngIf="isControlInvalid('login')">
+        Введите логин
+      </div>
     </div>
     <div class="mb-3">
       <label for="exampleInputEmail" class="form-label">Почта</label>
-      <input type="email" [(ngModel)]="user.email" name="email" class="form-control" id="exampleInputEmail" placeholder="name@example.com">
+      <input type="email" [(ngModel)]="user.email" name="email" class="form-control" id="exampleInputEmail" formControlName="email" placeholder="name@example.com">
       <div id="emailHelp" class="form-text">Мы никому не сообщим вашу почту.</div>
+      <div class="error" *ngIf="isControlInvalid('email')">
+        Введите корректный email
+      </div>
     </div>
     <div class="mb-3">
       <label for="exampleInputPassword" class="form-label">Пароль</label>
-      <input type="password" [(ngModel)]="user.password" name="password" class="form-control" id="exampleInputPassword">
+      <input type="password" [(ngModel)]="user.password" name="password" class="form-control" formControlName="password" id="exampleInputPassword">
+      <div class="error" *ngIf="isControlInvalid('password')">
+        Введите пароль
+      </div>
     </div>
-    <button type="submit" (click)="save();goHome()">Зарегистрироваться</button>
+    <button type="submit">Зарегистрироваться</button>
   </form>
 </div>
