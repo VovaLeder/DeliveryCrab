@@ -33,9 +33,16 @@ namespace DeliveryCrab.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Users.Add(user);
-                _context.SaveChanges();
-                return Ok(user);
+                if (_context.Users.Any(x => x.Login == user.Login))
+                {
+                    return BadRequest(user);
+                }
+                else
+                {
+                    _context.Users.Add(user);
+                    _context.SaveChanges();
+                    return Ok(user);
+                }
             }
             return BadRequest(ModelState);
         }
