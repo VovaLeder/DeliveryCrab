@@ -8,6 +8,7 @@ namespace DeliveryCrab.Models
 
         [ForeignKey("UserId")]
         public int UserId { get; set; }
+        public User User { get; set; } // навигационное свойство
 
         [ForeignKey("ProductId")]
         public int ProductId { get; set; }
