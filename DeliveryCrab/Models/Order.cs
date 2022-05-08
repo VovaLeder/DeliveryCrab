@@ -15,8 +15,8 @@ namespace DeliveryCrab.Models
 
         [ForeignKey("ProductId")]
         public int ProductId { get; set; }
-
         public int Count { get; set; }
+        public int Status { get; set; }//заказ вобработке/готовится/доставляется/доставлен(0/1/2/3)
 
     }
 }

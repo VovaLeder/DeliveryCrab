@@ -7,7 +7,7 @@ namespace DeliveryCrab.Models
         public DbSet<Product> Products { get; set; } = null!;
         public DbSet<Restaurant> Restaurants { get; set; } = null!;
         public DbSet<Basket> Baskets { get; set; } = null!;
-        public DbSet<Order> Oreders { get; set; } = null!;
+        public DbSet<Order> Orders { get; set; } = null!;
 
         public ApplicationContext(DbContextOptions<ApplicationContext> options)
             : base(options)

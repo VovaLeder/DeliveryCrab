@@ -72,7 +72,7 @@ namespace DeliveryCrab.Controllers
                     _context.SaveChanges();
                     return Ok(ProductId);
                 }
-                return BadRequest(); // Честно хз...
+                return BadRequest();
             }
             return BadRequest(ModelState);
         }
