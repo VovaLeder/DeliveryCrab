@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { UserService } from '../service/user.service';
 import { User } from '../models/user';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-
+import { HttpErrorResponse } from '@angular/common/http';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -12,7 +12,10 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 export class RegisterComponent implements OnInit {
     user: User = new User();
     users: User[] = [];
+    error_login:string = '';
+    list_login:Array<any> = [];
     formsReg!:FormGroup;
+    regSuccess:boolean = false;
     constructor(public userService: UserService, private router:Router, private fb: FormBuilder) { }
 
     ngOnInit() {
@@ -64,16 +67,25 @@ export class RegisterComponent implements OnInit {
       .forEach(controlName => control[controlName].markAsTouched());
       return;
     }
+
     this.userService.createUser(this.user)
-      .subscribe((data: User) => this.users.push(data));
-    this.userService.isAuthorization = true;
-    this.userService.log_user.firstname = this.user?.firstname;
-    this.userService.log_user.lastname = this.user?.lastname;
-    this.userService.log_user.age = this.user?.age;
-    this.userService.log_user.login = this.user?.login;
-    this.userService.log_user.email = this.user?.email;
-    this.userService.log_user.password = this.user?.password;
-    this.router.navigate(['']);
+      .subscribe((data: User) => this.users.push(data),
+      (error:HttpErrorResponse)=>console.log(error.status)
+      );
+    for (let u of this.users){
+      this.list_login.push(u.login);
+    }
+    for (let i=0;i<this.list_login.length;i++){
+      if (this.user.login == this.list_login[i]){
+        this.error_login = "Такой логин уже существует!!!";
+        return;
+      }
+    }
+    this.regSuccess = true;
+
+
+
+
 }
 }
 

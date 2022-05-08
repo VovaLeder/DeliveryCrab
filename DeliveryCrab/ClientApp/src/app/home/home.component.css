@@ -1,2 +1,14 @@
-
+*{
+  font-size: 30px;
+}
+a{
+  color: black;
+  transition: transform .3s;
+}
+a:hover{
+  transform: scale(1.1);
+}
+.container{
+  display: flex;
+}
 

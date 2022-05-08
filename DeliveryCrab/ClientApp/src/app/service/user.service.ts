@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient} from '@angular/common/http';
+import { HttpClient, HttpErrorResponse} from '@angular/common/http';
 import { User } from '../models/user';
-
 @Injectable()
 export class UserService {
 
@@ -27,4 +26,6 @@ export class UserService {
     deleteUser(id: number| undefined) {
         return this.http.delete("https://localhost:44432/user/deleteuser/?id=" + id);
     }
-}
+
+  }
+

@@ -40,7 +40,6 @@ export class LoginComponent implements OnInit {
       this.list_login.push(u.login);
       this.list_email.push(u.email);
       this.list_password.push(u.password);
-
     }
     for (let i=0;i<this.list_login.length;i++){
       if(this.login == this.list_login[i] && this.password == this.list_password[i]){

@@ -1,0 +1,15 @@
+<div class="container" *ngIf="!success">
+  <h1>Корзина</h1>
+  <div *ngFor="let b of basketService.baskets">
+    <h2>{{b.productname}} - {{b.count}} шт. {{b.price}}$</h2>
+  </div>
+  <h2>Общая сумма = {{basketService.sum}}$</h2>
+  <div>
+    <label for="address">Введите адрес</label>
+    <input type="text" [(ngModel)]="order.address" name="address" class="form-control" id="address">
+    <button type="submit" (click)="placeAnOrder()">Оформить заказ</button>
+  </div>
+</div>
+<div class="container" *ngIf="success">
+  <h1>Ваш заказ успешно сформирован, ожидайте...</h1>
+</div>

@@ -1,16 +1,27 @@
 <div class="account_info">
-  <h2>Личная информация пользователя</h2>
   <div class="info" *ngIf="!editMode">
-      <ul class="list-group">
-        <li class="list-group-item">Имя: {{userService.log_user.firstname}}</li>
-        <li class="list-group-item">Фамилия: {{userService.log_user.lastname}}</li>
-        <li class="list-group-item">Возраст: {{userService.log_user.age}}</li>
-        <li class="list-group-item">Логин: {{userService.log_user.login}}</li>
-        <li class="list-group-item">Почта: {{userService.log_user.email}}</li>
-        <li class="list-group-item">Пароль: {{userService.log_user.password}}</li>
-      </ul>
-    <button class="delete" type="submit" (click)="delete(userService.log_user)">Удалить аккаунт</button>
-    <button class="edit" type="submit" (click)="edit(userService.log_user)">Изменить аккаунт</button>
+    <div>
+        <h2>Личная информация пользователя</h2>
+        <ul class="list-group">
+          <li class="list-group-item">Имя: {{userService.log_user.firstname}}</li>
+          <li class="list-group-item">Фамилия: {{userService.log_user.lastname}}</li>
+          <li class="list-group-item">Возраст: {{userService.log_user.age}}</li>
+          <li class="list-group-item">Логин: {{userService.log_user.login}}</li>
+          <li class="list-group-item">Почта: {{userService.log_user.email}}</li>
+          <li class="list-group-item">Пароль: {{userService.log_user.password}}</li>
+        </ul>
+      <button class="delete" type="submit" (click)="delete(userService.log_user)">Удалить аккаунт</button>
+      <button class="edit" type="submit" (click)="edit(userService.log_user)">Изменить аккаунт</button>
+    </div>
+    <div>
+      <h2>История заказов</h2>
+      <div *ngFor="let o of orders">
+        <div *ngIf="o.userid == userService.log_user.id">
+          <h1>Заказ - {{o.description}}</h1>
+          <h2>Адрес - {{o.address}}, стоимость заказа {{o.price}}$</h2><hr size="10" color="black">
+        </div>
+      </div>
+    </div>
   </div>
   <div class="edit" *ngIf="editMode">
     <form [formGroup]="formsEdit" (submit)="save()">

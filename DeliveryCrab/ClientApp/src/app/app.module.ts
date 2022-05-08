@@ -16,6 +16,12 @@ import { KrustycrubComponent } from './krustycrub/krustycrub.component';
 import { RestaurantService } from './service/restaurant.service';
 import { ChumbucketComponent } from './chumbucket/chumbucket.component';
 import { RestaurantsComponent } from './restaurants/restaurants.component';
+import { BasketComponent } from './basket/basket.component';
+import { OrderComponent } from './order/order.component';
+import { ProductService } from './service/product.service';
+import { BasketService } from './service/basket.service';
+import { OrderService } from './service/order.service';
+
 
 
 
@@ -29,7 +35,9 @@ import { RestaurantsComponent } from './restaurants/restaurants.component';
     AccountComponent,
     KrustycrubComponent,
     ChumbucketComponent,
-    RestaurantsComponent
+    RestaurantsComponent,
+    BasketComponent,
+    OrderComponent,
 
   ],
   imports: [
@@ -44,12 +52,13 @@ import { RestaurantsComponent } from './restaurants/restaurants.component';
       {path:'account', component:AccountComponent},
       {path:'restaurants', component:RestaurantsComponent},
       {path:'krustycrub', component:KrustycrubComponent},
-      {path:'chumbucket', component:ChumbucketComponent}
+      {path:'chumbucket', component:ChumbucketComponent},
+      {path:'basket', component:BasketComponent}
     ]),
 
 
   ],
-  providers: [UserService, RestaurantService],
+  providers: [UserService, RestaurantService, ProductService, BasketService, OrderService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

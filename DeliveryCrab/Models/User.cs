@@ -10,6 +10,7 @@
         public string Email { get; set; }
         public string Password { get; set; }
 
-        public List<Order> Products { get; set; } = new();
+        //public List<Order> Products { get; set; } = new();
+        //public Basket Basket { get; set; } = new();
     }
 }

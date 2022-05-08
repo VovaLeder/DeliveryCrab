@@ -7,8 +7,8 @@
           <li class="nav-item" [routerLinkActive]="['link-active']">
             <a class="nav-link text-dark" [routerLink]="['/restaurants']">Рестораны</a>
           </li>
-          <li class="nav-item">
-            <p>Привет, {{userService.log_user.firstname}}</p>
+          <li class="nav-item" [routerLinkActive]="['link-active']">
+            <a class="nav-link text-dark" [routerLink]="['/basket']">Корзина</a>
           </li>
           <li class="nav-item" [routerLinkActive]="['link-active']">
             <a class="nav-link text-dark" [routerLink]="['/account']">Личный кабинет</a>
@@ -22,7 +22,7 @@
             <a class="nav-link text-dark" [routerLink]="['/restaurants']">Рестораны</a>
           </li>
           <li class="nav-item" [routerLinkActive]="['link-active']">
-            <a class="nav-link text-dark" [routerLink]="['/login']"><img src="assets/icons/login_icon.svg" alt="">Войти</a>
+            <a class="nav-link text-dark" [routerLink]="['/login']"><img src="assets/icons/login_icon.svg" alt=""> Войти</a>
           </li>
           <li class="nav-item" [routerLinkActive]="['link-active']">
             <a class="nav-link text-dark" [routerLink]="['/register']"><img src="assets/icons/register_icon.svg" alt=""> Регистрация</a>

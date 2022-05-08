@@ -1,4 +1,4 @@
-<div class="register_container" >
+<div class="register_container" *ngIf="!regSuccess" >
   <form [formGroup]="formsReg" (submit)="save()">
     <div class="mb-3">
       <label for="exampleInputFirstName" class="form-label">Имя</label>
@@ -28,6 +28,9 @@
       <div class="error" *ngIf="isControlInvalid('login')">
         Введите логин
       </div>
+      <div class="error">
+        {{error_login}}
+      </div>
     </div>
     <div class="mb-3">
       <label for="exampleInputEmail" class="form-label">Почта</label>
@@ -46,4 +49,7 @@
     </div>
     <button type="submit">Зарегистрироваться</button>
   </form>
+</div>
+<div class="container" *ngIf="regSuccess">
+  Вы успешно зарегистрировались!!!
 </div>

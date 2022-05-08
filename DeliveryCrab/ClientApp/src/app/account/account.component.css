@@ -39,7 +39,9 @@ input{
 .form-control{
   color: white;
 }
-
 .error{
   color: red;
+}
+.info{
+  display: flex;
 }
