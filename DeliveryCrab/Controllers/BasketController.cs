@@ -59,6 +59,35 @@ namespace DeliveryCrab.Controllers
             return BadRequest(ModelState);
         }
 
+        [HttpPost]
+        [Route("PostBasketAlternative")]
+        public IActionResult PostAlternative(int userId, int productId, int count)
+        {
+            if (ModelState.IsValid)
+            {
+                var baskets = _context.Baskets.Where(x => x.Productid == productId);
+                Basket basket = baskets.First(x => x.Userid == userId);
+                if (basket != null)//если запись в корзине с этим продуктом есть, то увеличиваем количество на 1
+                {
+                    basket.Count = basket.Count + count;
+                    _context.SaveChanges();
+                    return Ok(basket);
+                }
+                else//иначе добавляем запись с этим продуктом
+                {
+                    basket.Productid = productId;
+                    basket.Productname = _context.Products.First(x => x.Id == productId).Name;
+                    basket.Userid = userId;
+                    basket.Count = count;
+                    basket.Price = _context.Products.First(x => x.Id == productId).Price;
+                    _context.Baskets.Add(basket);
+                    _context.SaveChanges();
+                    return Ok(basket);
+                }
+            }
+            return BadRequest(ModelState);
+        }
+
         [HttpDelete]
         [Route("DeleteItem")]
         public IActionResult Delete(int id)
