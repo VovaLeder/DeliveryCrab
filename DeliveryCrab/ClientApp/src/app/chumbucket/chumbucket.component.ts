@@ -45,7 +45,7 @@ export class ChumbucketComponent implements OnInit {
     this.basket.productid = id;
     this.basket.productname = name;
     this.basketService.postProduct(this.basket)
-      .subscribe((data:Basket)=>this.products.push(data))
+      .subscribe((data:Basket)=>this.products.push(data));
   }
 
 }

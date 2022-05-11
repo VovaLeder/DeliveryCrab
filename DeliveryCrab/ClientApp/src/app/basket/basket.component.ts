@@ -11,27 +11,18 @@ import { UserService } from '../service/user.service';
   styleUrls: ['./basket.component.css']
 })
 export class BasketComponent implements OnInit {
-  orders:Order[] = [];
   id_list:Array<any> = [];
-  order:Order = new Order();
   products:Array<any> = [];
   count:Array<any> = [];
   price:number = 0;
   description:string = '';
   success:boolean = false;
 
-  constructor(public basketService:BasketService, public orderService:OrderService, public userService:UserService) {}
-
+  constructor(public basketService:BasketService, public orderService:OrderService,
+    public userService:UserService) {}
   ngOnInit(){
     this.basketService.loadBasket();
-    this.loadOrder();
-
-  }
-  loadOrder(){
-    this.orderService.getOrder()
-      .subscribe((data:any)=>
-        this.orders = data as Order[])
-
+    this.orderService.loadOrder();
   }
   placeAnOrder(){
     for(let b of this.basketService.baskets){
@@ -43,17 +34,22 @@ export class BasketComponent implements OnInit {
     for (let i=0;i<this.products.length;i++){
       this.description +=this.products[i] + " " + String(this.count[i]) + "шт.\n" ;
     }
-    this.order.data = new Date();
-    this.order.userid = this.userService.log_user.id;
-    this.order.description = this.description;
-    this.order.price = this.price;
-    this.orderService.postOrder(this.order)
-      .subscribe((data: Order)=>this.orders.push(data))
+    this.orderService.order.data = new Date();
+    this.orderService.order.userid = this.userService.log_user.id;
+    this.orderService.order.description = this.description;
+    this.orderService.order.price = this.price;
+    this.orderService.postOrder(this.orderService.order)
+      .subscribe((data: Order)=>this.orderService.orders.push(data))
     for (let i of this.id_list){
       this.basketService.deleteProduct(i)
         .subscribe(data=>this.basketService.loadBasket)
     }
-
     this.success = true;
+    this.orderService.order.address = '';
+  }
+
+  delete(b:Basket){
+    this.basketService.deleteProduct(b.id)
+      .subscribe(data=>this.basketService.loadBasket());
   }
 }

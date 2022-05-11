@@ -29,11 +29,11 @@ export class AccountComponent implements OnInit {
     this.formsEdit = this.fb.group({
       firstname: ['', [
         Validators.required,
-        Validators.pattern(/[А-я]/)
+        Validators.pattern(/[А-яA-z]/)
       ]],
       lastname: ['', [
         Validators.required,
-        Validators.pattern(/[А-я]/)
+        Validators.pattern(/[А-яA-z]/)
       ]],
       age: ['',[
         Validators.required,

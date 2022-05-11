@@ -6,8 +6,17 @@ import { Order } from '../models/order';
   providedIn: 'root'
 })
 export class OrderService {
+  orders:Order[] = [];
+  order:Order = new Order();
 
   constructor(private http:HttpClient) { }
+
+  loadOrder(){
+    this.getOrder()
+      .subscribe((data:any)=>
+        this.orders = data as Order[])
+
+  }
   getOrder(){
     return this.http.get("https://localhost:44432/order");
   }

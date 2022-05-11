@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 namespace DeliveryCrab.Models
 {
-    public class Basket
+    public class Cart
     {
         public int Id { get; set; }
         public int Userid { get; set; }

@@ -31,11 +31,11 @@ export class RegisterComponent implements OnInit {
     this.formsReg = this.fb.group({
       firstname: ['', [
         Validators.required,
-        Validators.pattern(/[А-я]/)
+        Validators.pattern(/[А-яA-z]/)
       ]],
       lastname: ['', [
         Validators.required,
-        Validators.pattern(/[А-я]/)
+        Validators.pattern(/[А-яA-z]/)
       ]],
       age: ['',[
         Validators.required,

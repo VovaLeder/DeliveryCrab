@@ -9,7 +9,7 @@ const PROXY_CONFIG = [
       "/user",
       "/product",
       "/restaurant",
-      "/basket",
+      "/cart",
       "/order"
     ],
     target: target,

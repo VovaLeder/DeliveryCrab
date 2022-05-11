@@ -1,9 +1,12 @@
 .container{
   margin: 0 auto;
+  width: 800px;
+  margin: 0 auto;
   text-align: center;
 }
 button{
   transition: transform .2s;
+
 }
 button:hover{
   transform: scale(1.1);
@@ -11,9 +14,12 @@ button:hover{
 button:active{
   transform: scale(0.9);
 }
-input{
+textarea{
   background-image: url("/assets/i.jpg");
   border: none;
+  height: 100px;
+  padding-bottom: 70px;
+  word-break: break-all;
 }
 .form-control{
   color: white;
@@ -25,4 +31,8 @@ button{
   margin-bottom: 20px;
   padding: 10px;
   border-radius: 20px;
+}
+.basket{
+  display: flex;
+  margin: 0 auto;
 }

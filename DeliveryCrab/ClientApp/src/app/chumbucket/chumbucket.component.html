@@ -12,7 +12,7 @@
             <h4>Цена {{p.price}} доллара</h4>
             <div *ngIf="userService.isAuthorization">
               <label for="conut" class="form-label">Кол-во</label>
-              <input type="number" #count name="count" value="0" min="0" step="1" id="count">
+              <input type="number" #count name="count" value="1" min="1" step="1" id="count">
               <button (click)="addToBasket(p.id, p.name,p.price,count.value)">Добавить в корзину</button>
             </div>
           </div>
