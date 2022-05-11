@@ -38,14 +38,14 @@ namespace DeliveryCrab.Controllers
 
         [HttpPost]
         [Route("PostBasket")]
-        public IActionResult Post(Basket basket)
+        public IActionResult Post(Basket basket, int count)
         {
             if (ModelState.IsValid)
             {
                 if (_context.Baskets.Any(x => x.Productid == basket.Productid))//если запись в корзине с этим продуктом есть, то увеличиваем количество на 1
                 {
                     Basket old_basket = _context.Baskets.First(x => x.Id == basket.Id);
-                    old_basket.Count = old_basket.Count + 1;
+                    old_basket.Count = old_basket.Count + count;
                     _context.SaveChanges();
                     return Ok(basket);
                 }
