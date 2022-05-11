@@ -23,7 +23,7 @@ namespace DeliveryCrab.Models
             modelBuilder.Entity<User>().HasData(
                 new User[]
                 {               
-                    
+                    new User {Id = 1, Firstname = "Admin", Lastname = "Admin", Age = 25, Login = "admin", Email = "delivery.crab.admin@bottom.com", Password = "admin"}
                 });
 
             modelBuilder.Entity<Restaurant>().HasData(
