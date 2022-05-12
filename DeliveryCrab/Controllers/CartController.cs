@@ -17,14 +17,14 @@ namespace DeliveryCrab.Controllers
         [HttpGet]
         public IEnumerable<Cart> Get()
         {
-            return _context.Cart.ToList();
+            return _context.Carts.ToList();
         }
 
         [HttpGet]
         [Route("{id}")]
         public Cart Get(int id)
         {
-            Cart? basket = _context.Cart.FirstOrDefault(x => x.Id == id);
+            Cart? basket = _context.Carts.FirstOrDefault(x => x.Id == id);
             return basket;
         }
 
@@ -32,7 +32,7 @@ namespace DeliveryCrab.Controllers
         [Route("{UserId}")]
         public Cart GetByUserId(int UserId)
         {
-            Cart? basket = _context.Cart.FirstOrDefault(x => x.Userid == UserId);
+            Cart? basket = _context.Carts.FirstOrDefault(x => x.Userid == UserId);
             return basket;
         }
 
@@ -42,16 +42,16 @@ namespace DeliveryCrab.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (_context.Cart.Any(x => x.Productid == cart.Productid))//если запись в корзине с этим продуктом есть, то увеличиваем количество на 1
+                if (_context.Carts.Any(x => x.Productid == cart.Productid))//если запись в корзине с этим продуктом есть, то увеличиваем количество на 1
                 {
-                    Cart old_cart = _context.Cart.First(x => x.Id == cart.Id);
+                    Cart old_cart = _context.Carts.First(x => x.Id == cart.Id);
                     old_cart.Count = old_cart.Count + 1;
                     _context.SaveChanges();
                     return Ok(cart);
                 }
                 else//иначе добавляем запись с этим продуктом
                 {
-                    _context.Cart.Add(cart);
+                    _context.Carts.Add(cart);
                     _context.SaveChanges();
                     return Ok(cart);
                 }
@@ -65,10 +65,10 @@ namespace DeliveryCrab.Controllers
         {
             if (ModelState.IsValid)
             {
-                Cart basket = _context.Cart.First(x => x.Id == id);
+                Cart basket = _context.Carts.First(x => x.Id == id);
                 if (basket != null)
                 {
-                    _context.Cart.Remove(basket);
+                    _context.Carts.Remove(basket);
                     _context.SaveChanges();
                     return Ok(id);
                 }
@@ -76,7 +76,20 @@ namespace DeliveryCrab.Controllers
             }
             return BadRequest(ModelState);
         }
-
+        [HttpPut]
+        [Route("PutCart")]
+        public IActionResult Put(Cart cart)
+        {
+            if (ModelState.IsValid)
+            {
+                Cart old_cart = _context.Carts.First(x => x.Id == cart.Id);
+                old_cart.Count = cart.Count;
+                old_cart.Price = old_cart.Price * cart.Count;
+                _context.SaveChanges();
+                return Ok(cart);
+            }
+            return BadRequest(ModelState);
+        }
         //[HttpPost]
         //[Route("PostBasket")]
         //public IActionResult Post(Basket basket, int count)
