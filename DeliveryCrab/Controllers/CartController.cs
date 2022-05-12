@@ -76,7 +76,19 @@ namespace DeliveryCrab.Controllers
             }
             return BadRequest(ModelState);
         }
-
+        [HttpPut]
+        [Route("PutCart")]
+        public IActionResult Put(Cart cart)
+        {
+            if (ModelState.IsValid)
+            {
+                Cart old_cart = _context.Carts.First(x => x.Id == cart.Id);
+                old_cart.Count = cart.Count;
+                _context.SaveChanges();
+                return Ok(cart);
+            }
+            return BadRequest(ModelState);
+        }
         //[HttpPost]
         //[Route("PostBasket")]
         //public IActionResult Post(Basket basket, int count)
