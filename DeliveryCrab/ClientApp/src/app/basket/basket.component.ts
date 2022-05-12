@@ -17,6 +17,7 @@ export class BasketComponent implements OnInit {
   price:number = 0;
   description:string = '';
   success:boolean = false;
+  editMode:boolean|undefined = false;
 
   constructor(public basketService:BasketService, public orderService:OrderService,
     public userService:UserService) {}
@@ -51,5 +52,17 @@ export class BasketComponent implements OnInit {
   delete(b:Basket){
     this.basketService.deleteProduct(b.id)
       .subscribe(data=>this.basketService.loadBasket());
+  }
+
+  edit(b: Basket){
+    this.basketService.basket = b;
+    this.editMode = true;
+  }
+  update(){
+    this.basketService.updateCount(this.basketService.basket)
+      .subscribe(data=>this.basketService.loadBasket());
+    this.basketService.loadBasket();
+
+    this.editMode = false;
   }
 }

@@ -7,6 +7,7 @@ import { Basket } from '../models/basket';
 })
 export class BasketService {
   baskets:Basket[] = [];
+  basket:Basket = new Basket();
   sum:number = 0;
   empty:boolean = true;
   constructor(private http: HttpClient) { }
@@ -36,5 +37,8 @@ export class BasketService {
   }
   deleteProduct(id:number|undefined){
     return this.http.delete("https://localhost:44432/cart/deleteitem/?id=" + id);
+  }
+  updateCount(basket: Basket){
+    return this.http.put("https://localhost:44432/cart/putcart", basket);
   }
 }

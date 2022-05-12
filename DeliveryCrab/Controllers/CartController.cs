@@ -84,6 +84,7 @@ namespace DeliveryCrab.Controllers
             {
                 Cart old_cart = _context.Carts.First(x => x.Id == cart.Id);
                 old_cart.Count = cart.Count;
+                old_cart.Price = old_cart.Price * cart.Count;
                 _context.SaveChanges();
                 return Ok(cart);
             }
