@@ -1,11 +1,43 @@
 <div class="container" *ngIf="!success">
   <h1>Корзина</h1>
   <div *ngIf="!basketService.empty">
+    <div class="basket" *ngFor="let b of basketService.baskets">
+      <ng-template [ngIf]="basketService.basket?.id != b.id" [ngIfElse]="edit">
+        <h2>{{b.productname}}</h2>
+        <h2>- {{b.count}} шт.</h2>
+        <h2>&nbsp;по {{b.price}}$</h2>
+        <button type="submit" (click)="delete(b)">Удалить из корзины</button>
+        <button type="submit" (click)="editCount(b)">Изменить кол-во</button>
+      </ng-template>
+    </div>
+    <h2>Общая сумма = {{basketService.sum}}$</h2>
+    <label for="address"><h2>Введите адрес</h2></label>
+    <textarea type="text" [(ngModel)]="orderService.order.address" name="address" class="form-control" id="address"></textarea>
+    <button type="submit" (click)="placeAnOrder()">Оформить заказ</button>
+  </div>
+</div>
+<ng-template #edit>
+  <h2>{{basketService.basket?.productname}}</h2>
+  <input type="number" [(ngModel)]="basketService.basket.count" name="count"  value="{{basketService.basket.count}}" min="1" step="1">
+  <button type="submit" (click)="update()">Сохранить</button>
+  <button type="submit" (click)="cancel()">Отмена</button>
+</ng-template>
+<div *ngIf="basketService.empty" style="text-align: center;">
+  <h1>Ваша корзина пуста! Сделайте, пожалуйста, заказ!!!</h1>
+</div>
+<div class="container" *ngIf="success">
+  <h1>Ваш заказ успешно сформирован, ожидайте...</h1>
+</div>
+
+
+<!-- <div class="container" *ngIf="!success">
+  <h1>Корзина</h1>
+  <div *ngIf="!basketService.empty">
       <div class="basket" *ngFor="let b of basketService.baskets">
         <h2>{{b.productname}}</h2>
         <h2 *ngIf="!editMode">- {{b.count}} шт.</h2>
-        <input *ngIf="editMode" [(ngModel)]="basketService.basket.count" name="count" type="number" value="1" min="1" step="1">
-        <h2>{{b.price}}$</h2>
+        <input *ngIf="editMode" type="number" id="count" name="count" #count value="{{b.count}}" min="1" step="1">
+        <h2>&nbsp;по {{b.price}}$</h2>
         <button type="submit" (click)="delete(b)">Удалить из корзины</button>
         <button *ngIf="!editMode" type="submit" (click)="edit(b)">Изменить кол-во</button>
         <button *ngIf="editMode" type="submit" (click)="update()">Сохранить</button>
@@ -21,4 +53,4 @@
   </div>
 <div class="container" *ngIf="success">
   <h1>Ваш заказ успешно сформирован, ожидайте...</h1>
-</div>
+</div> -->

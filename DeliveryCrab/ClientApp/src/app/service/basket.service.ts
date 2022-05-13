@@ -17,7 +17,7 @@ export class BasketService {
         this.baskets = data as Basket[]
         this.sum = 0;
         for (let o of this.baskets){
-          this.sum+=o.price!;
+          this.sum+=o.cost!;
           this.sum = Math.round(this.sum*100)/100;
         }
         if(this.sum != 0){

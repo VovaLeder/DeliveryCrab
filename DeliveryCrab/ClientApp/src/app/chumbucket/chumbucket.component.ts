@@ -23,7 +23,7 @@ export class ChumbucketComponent implements OnInit {
   ngOnInit() {
     this.loadRestaurant();
     this.loadProduct();
-    this.loadBasket();
+    this.basketService.loadBasket();
   }
 
   loadRestaurant(){
@@ -34,14 +34,12 @@ export class ChumbucketComponent implements OnInit {
     this.productService.getProduct()
       .subscribe((data:any)=>this.product = data as Product[])
   }
-  loadBasket(){
-    this.basketService.getBasket()
-      .subscribe((data:any)=>this.products = data as Basket[])
-  }
-  addToBasket(id:number|undefined, name:string|undefined,price:number|undefined, count:string){
+
+  addToBasket(id:number|undefined, name:string|undefined,price:number|undefined){
     this.basket.userid = this.userService.log_user.id;
-    this.basket.count = parseInt(count);
-    this.basket.price = price!*parseInt(count);
+    this.basket.count! = 1;
+    this.basket.price = price
+    this.basket.cost! = this.basket.price!*this.basket.count!;
     this.basket.productid = id;
     this.basket.productname = name;
     this.basketService.postProduct(this.basket)

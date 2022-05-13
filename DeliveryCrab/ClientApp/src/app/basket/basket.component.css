@@ -36,3 +36,13 @@ button{
   display: flex;
   margin: 0 auto;
 }
+input{
+  background-image: url("/assets/i.jpg");
+  border: none;
+  border-radius: 20px;
+  color: white;
+  width: 75px;
+  height: 50px;
+  text-align: center;
+  font-size: 24px;
+}

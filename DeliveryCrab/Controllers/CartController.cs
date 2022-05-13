@@ -44,8 +44,9 @@ namespace DeliveryCrab.Controllers
             {
                 if (_context.Carts.Any(x => x.Productid == cart.Productid))//если запись в корзине с этим продуктом есть, то увеличиваем количество на 1
                 {
-                    Cart old_cart = _context.Carts.First(x => x.Id == cart.Id);
+                    Cart old_cart = _context.Carts.First(x => x.Productid == cart.Productid);
                     old_cart.Count = old_cart.Count + 1;
+                    old_cart.Cost = old_cart.Price * old_cart.Count;
                     _context.SaveChanges();
                     return Ok(cart);
                 }
@@ -84,7 +85,7 @@ namespace DeliveryCrab.Controllers
             {
                 Cart old_cart = _context.Carts.First(x => x.Id == cart.Id);
                 old_cart.Count = cart.Count;
-                old_cart.Price = old_cart.Price * cart.Count;
+                old_cart.Cost = old_cart.Price * cart.Count;
                 _context.SaveChanges();
                 return Ok(cart);
             }

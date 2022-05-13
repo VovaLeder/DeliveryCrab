@@ -17,7 +17,6 @@ export class BasketComponent implements OnInit {
   price:number = 0;
   description:string = '';
   success:boolean = false;
-  editMode:boolean|undefined = false;
 
   constructor(public basketService:BasketService, public orderService:OrderService,
     public userService:UserService) {}
@@ -30,7 +29,7 @@ export class BasketComponent implements OnInit {
       this.id_list.push(b.id)
       this.products.push(b.productname);
       this.count.push(b.count);
-      this.price +=b.price!;
+      this.price +=b.cost!;
     }
     for (let i=0;i<this.products.length;i++){
       this.description +=this.products[i] + " " + String(this.count[i]) + "шт.\n" ;
@@ -48,21 +47,19 @@ export class BasketComponent implements OnInit {
     this.success = true;
     this.orderService.order.address = '';
   }
-
   delete(b:Basket){
     this.basketService.deleteProduct(b.id)
       .subscribe(data=>this.basketService.loadBasket());
   }
-
-  edit(b: Basket){
+  editCount(b: Basket){
     this.basketService.basket = b;
-    this.editMode = true;
   }
   update(){
     this.basketService.updateCount(this.basketService.basket)
       .subscribe(data=>this.basketService.loadBasket());
-    this.basketService.loadBasket();
-
-    this.editMode = false;
+    this.cancel();
+  }
+  cancel(){
+    this.basketService.basket = new Basket();
   }
 }
