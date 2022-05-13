@@ -18,7 +18,7 @@
 </div>
 <ng-template #edit>
   <h2>{{basketService.basket?.productname}}</h2>
-  <input type="number" [(ngModel)]="basketService.basket.count" name="count"  value="{{basketService.basket.count}}" min="1" step="1">
+  <input type="number" [(ngModel)]="basketService.basket.count" name="count" min="1" step="1">
   <button type="submit" (click)="update()">Сохранить</button>
   <button type="submit" (click)="cancel()">Отмена</button>
 </ng-template>

@@ -1,5 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-namespace DeliveryCrab.Models
+﻿namespace DeliveryCrab.Models
 {
     public class Cart
     {

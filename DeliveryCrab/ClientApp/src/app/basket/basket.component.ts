@@ -17,6 +17,7 @@ export class BasketComponent implements OnInit {
   price:number = 0;
   description:string = '';
   success:boolean = false;
+  test:number|undefined = 0;
 
   constructor(public basketService:BasketService, public orderService:OrderService,
     public userService:UserService) {}
@@ -53,6 +54,8 @@ export class BasketComponent implements OnInit {
   }
   editCount(b: Basket){
     this.basketService.basket = b;
+    this.test = this.basketService.basket.count;
+    console.log(this.test);
   }
   update(){
     this.basketService.updateCount(this.basketService.basket)
@@ -60,6 +63,7 @@ export class BasketComponent implements OnInit {
     this.cancel();
   }
   cancel(){
+    this.basketService.basket.count = this.test;
     this.basketService.basket = new Basket();
   }
 }
