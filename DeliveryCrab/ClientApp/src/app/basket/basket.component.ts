@@ -39,6 +39,7 @@ export class BasketComponent implements OnInit {
     this.orderService.order.userid = this.userService.log_user.id;
     this.orderService.order.description = this.description;
     this.orderService.order.price = this.price;
+    this.orderService.order.status = 'Сформирован';
     this.orderService.postOrder(this.orderService.order)
       .subscribe((data: Order)=>this.orderService.orders.push(data))
     for (let i of this.id_list){
@@ -55,7 +56,6 @@ export class BasketComponent implements OnInit {
   editCount(b: Basket){
     this.basketService.basket = b;
     this.test = this.basketService.basket.count;
-    console.log(this.test);
   }
   update(){
     this.basketService.updateCount(this.basketService.basket)

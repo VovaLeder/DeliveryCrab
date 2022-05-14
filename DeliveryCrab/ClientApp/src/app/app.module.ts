@@ -17,10 +17,10 @@ import { RestaurantService } from './service/restaurant.service';
 import { ChumbucketComponent } from './chumbucket/chumbucket.component';
 import { RestaurantsComponent } from './restaurants/restaurants.component';
 import { BasketComponent } from './basket/basket.component';
-import { OrderComponent } from './order/order.component';
 import { ProductService } from './service/product.service';
 import { BasketService } from './service/basket.service';
 import { OrderService } from './service/order.service';
+import { OrdersComponent } from './orders/orders.component';
 
 
 
@@ -37,7 +37,7 @@ import { OrderService } from './service/order.service';
     ChumbucketComponent,
     RestaurantsComponent,
     BasketComponent,
-    OrderComponent,
+    OrdersComponent,
 
   ],
   imports: [
@@ -53,7 +53,8 @@ import { OrderService } from './service/order.service';
       {path:'restaurants', component:RestaurantsComponent},
       {path:'krustycrub', component:KrustycrubComponent},
       {path:'chumbucket', component:ChumbucketComponent},
-      {path:'basket', component:BasketComponent}
+      {path:'basket', component:BasketComponent},
+      {path:'orders', component:OrdersComponent}
     ]),
 
 

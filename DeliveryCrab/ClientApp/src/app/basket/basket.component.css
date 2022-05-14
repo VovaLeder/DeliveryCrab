@@ -4,16 +4,6 @@
   margin: 0 auto;
   text-align: center;
 }
-button{
-  transition: transform .2s;
-
-}
-button:hover{
-  transform: scale(1.1);
-}
-button:active{
-  transform: scale(0.9);
-}
 textarea{
   background-image: url("/assets/i.jpg");
   border: none;
@@ -25,12 +15,19 @@ textarea{
   color: white;
 }
 button{
+  transition: transform .2s;
   background-image: url("/assets/i.jpg");
   border: none;
   color: white;
   margin-bottom: 20px;
   padding: 10px;
   border-radius: 20px;
+}
+button:hover{
+  transform: scale(1.1);
+}
+button:active{
+  transform: scale(0.9);
 }
 .basket{
   display: flex;

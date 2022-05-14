@@ -5,6 +5,7 @@ export class Order{
     public address?:string,
     public userid?:number,
     public description?:string,
-    public price?:number
+    public price?:number,
+    public status?:string
   ){}
 }

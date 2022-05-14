@@ -10,7 +10,7 @@
             <img src="{{p.image}}" alt="Изображение">
             <h4>{{p.name}} - {{p.description}}</h4>
             <h4>Цена {{p.price}} доллара</h4>
-            <div *ngIf="userService.isAuthorization">
+            <div *ngIf="userService.isAuthorization && userService.log_user.login != 'admin'">
               <button (click)="addToBasket(p.id, p.name,p.price)">Добавить в корзину</button>
             </div>
           </div>

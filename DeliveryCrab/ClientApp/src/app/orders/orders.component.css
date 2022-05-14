@@ -1,0 +1,28 @@
+button{
+  transition: transform .2s;
+  background-image: url("/assets/i.jpg");
+  border: none;
+  color: white;
+  margin-bottom: 20px;
+  padding: 10px;
+  border-radius: 20px;
+}
+button:hover{
+  transform: scale(1.1);
+}
+button:active{
+  transform: scale(0.9);
+}
+
+select{
+  color: white;
+  padding: 10px;
+  border: none;
+  background:black;
+  font-size: 24px;
+  border-radius: 20px;
+}
+select:hover{
+  cursor: pointer;
+}
+

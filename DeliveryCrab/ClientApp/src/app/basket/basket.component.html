@@ -30,27 +30,3 @@
 </div>
 
 
-<!-- <div class="container" *ngIf="!success">
-  <h1>Корзина</h1>
-  <div *ngIf="!basketService.empty">
-      <div class="basket" *ngFor="let b of basketService.baskets">
-        <h2>{{b.productname}}</h2>
-        <h2 *ngIf="!editMode">- {{b.count}} шт.</h2>
-        <input *ngIf="editMode" type="number" id="count" name="count" #count value="{{b.count}}" min="1" step="1">
-        <h2>&nbsp;по {{b.price}}$</h2>
-        <button type="submit" (click)="delete(b)">Удалить из корзины</button>
-        <button *ngIf="!editMode" type="submit" (click)="edit(b)">Изменить кол-во</button>
-        <button *ngIf="editMode" type="submit" (click)="update()">Сохранить</button>
-      </div>
-      <h2>Общая сумма = {{basketService.sum}}$</h2>
-      <label for="address"><h2>Введите адрес</h2></label>
-      <textarea type="text" [(ngModel)]="orderService.order.address" name="address" class="form-control" id="address"></textarea>
-      <button type="submit" (click)="placeAnOrder()">Оформить заказ</button>
-    </div>
-  </div>
-  <div *ngIf="basketService.empty" style="text-align: center;">
-    <h1>Ваша корзина пуста! Сделайте, пожалуйста, заказ!!!</h1>
-  </div>
-<div class="container" *ngIf="success">
-  <h1>Ваш заказ успешно сформирован, ожидайте...</h1>
-</div> -->

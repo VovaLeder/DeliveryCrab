@@ -23,4 +23,7 @@ export class OrderService {
   postOrder(order: Order){
     return this.http.post("https://localhost:44432/order/postorder", order);
   }
+  putOrder(order: Order){
+    return this.http.put("https://localhost:44432/order/putorder", order)
+  }
 }

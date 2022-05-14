@@ -4,15 +4,11 @@
       <a class="navbar-brand" [routerLink]="['/']"><img src="assets/icons/icons_bob.svg" alt=""> DeliveryCrab</a>
       <div class="navbar-collapse collapse d-sm-inline-flex justify-content-end">
         <ul class="navbar-nav flex-grow" *ngIf="userService.isAuthorization">
-          <li class="nav-item" [routerLinkActive]="['link-active']">
-            <a class="nav-link text-dark" [routerLink]="['/restaurants']">Рестораны</a>
-          </li>
-          <li class="nav-item" [routerLinkActive]="['link-active']">
-            <a class="nav-link text-dark" [routerLink]="['/basket']">Корзина</a>
-          </li>
-          <li class="nav-item" [routerLinkActive]="['link-active']">
-            <a class="nav-link text-dark" [routerLink]="['/account']">Личный кабинет</a>
-          </li>
+          <ng-template [ngIf]="userService.log_user.login === 'admin'" [ngIfElse]="user">
+            <li class="nav-item" [routerLinkActive]="['link-actice']">
+              <a class="nav-link text-dark" [routerLink]="['/orders']">Заказы</a>
+            </li>
+          </ng-template>
           <li class="nav-item">
             <button class="exit" type="submit" (click)="exit()">Выход</button>
           </li>
@@ -32,3 +28,14 @@
     </div>
   </nav>
 </header>
+<ng-template #user>
+  <li class="nav-item" [routerLinkActive]="['link-active']">
+    <a class="nav-link text-dark" [routerLink]="['/restaurants']">Рестораны</a>
+  </li>
+  <li class="nav-item" [routerLinkActive]="['link-active']">
+    <a class="nav-link text-dark" [routerLink]="['/basket']">Корзина</a>
+  </li>
+  <li class="nav-item" [routerLinkActive]="['link-active']">
+    <a class="nav-link text-dark" [routerLink]="['/account']">Личный кабинет</a>
+  </li>
+</ng-template>

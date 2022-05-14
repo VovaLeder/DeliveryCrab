@@ -31,5 +31,19 @@ namespace DeliveryCrab.Controllers
             }
             return BadRequest(ModelState);
         }
+
+        [HttpPut]
+        [Route("PutOrder")]
+        public IActionResult Put(Order order)
+        {
+            if (ModelState.IsValid)
+            {
+                Order old_order = _context.Orders.First(x => x.Id == order.Id);
+                old_order.Status = order.Status;
+                _context.SaveChanges();
+                return Ok(order);
+            }
+            return BadRequest(ModelState);
+        }
     }
 }

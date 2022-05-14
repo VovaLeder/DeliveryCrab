@@ -1,0 +1,21 @@
+<tr *ngFor="let o of orderService.orders">
+  <ng-template [ngIf]="orderService.order?.id != o.id" [ngIfElse]="edit">
+    <h1>Заказ № {{o.id}}, id пользователя {{o.userid}}-{{o.description}}, стоимость {{o.price}}$</h1>
+    <h2>Адрес {{o.address}}, дата {{o.data}}</h2>
+    <h3>Статут заказа - {{o.status}}</h3>
+    <button type="submit" (click)="editOrder(o)">Изменить статус заказа</button>
+    <hr size="10" color="black">
+  </ng-template>
+</tr>
+<ng-template #edit>
+  <h1>Заказ № {{orderService.order.id}}-{{orderService.order.description}}, стоимость {{orderService.order.price}}</h1>
+  <h2>Адрес {{orderService.order.address}}, дата {{orderService.order.data?.getDay}}</h2>
+  <select [(ngModel)]="orderService.order.status" name="status" class="select">
+    <option value="Сформирован">Сформирован</option>
+    <option value="Готовится">Готовится</option>
+    <option value="Доставляется">Доставляется</option>
+    <option value="Доставлен">Доставлен</option>
+  </select>
+  <button type="submit" (click)="update()">Сохранить</button>
+  <hr size="10" color="black">
+</ng-template>

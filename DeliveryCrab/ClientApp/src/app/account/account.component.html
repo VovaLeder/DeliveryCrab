@@ -15,10 +15,11 @@
     </div>
     <div>
       <h2>История заказов</h2>
-      <div *ngFor="let o of orders">
+      <div *ngFor="let o of orderService.orders">
         <div *ngIf="o.userid == userService.log_user.id">
           <h1>Заказ - {{o.description}}</h1>
-          <h2>Адрес - {{o.address}}, стоимость заказа {{o.price}}$</h2><hr size="10" color="black">
+          <h2>Адрес - {{o.address}}, стоимость заказа {{o.price}}$</h2>
+          <h2>Статус заказа - {{o.status}}</h2><hr size="10" color="black">
         </div>
       </div>
     </div>

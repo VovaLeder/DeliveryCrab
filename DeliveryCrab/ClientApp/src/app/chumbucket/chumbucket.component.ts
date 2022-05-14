@@ -13,7 +13,6 @@ import { UserService } from '../service/user.service';
   styleUrls: ['./chumbucket.component.css']
 })
 export class ChumbucketComponent implements OnInit {
-  basket:Basket = new Basket();
   products:Basket[] = [];
   chumbucket: Restaurant[] = [];
   product:Product[] = [];
@@ -36,13 +35,13 @@ export class ChumbucketComponent implements OnInit {
   }
 
   addToBasket(id:number|undefined, name:string|undefined,price:number|undefined){
-    this.basket.userid = this.userService.log_user.id;
-    this.basket.count! = 1;
-    this.basket.price = price
-    this.basket.cost! = this.basket.price!*this.basket.count!;
-    this.basket.productid = id;
-    this.basket.productname = name;
-    this.basketService.postProduct(this.basket)
+    this.basketService.basket.userid = this.userService.log_user.id;
+    this.basketService.basket.count! = 1;
+    this.basketService.basket.price = price
+    this.basketService.basket.cost! = this.basketService.basket.price!*this.basketService.basket.count!;
+    this.basketService.basket.productid = id;
+    this.basketService.basket.productname = name;
+    this.basketService.postProduct(this.basketService.basket)
       .subscribe((data:Basket)=>this.products.push(data));
   }
 
