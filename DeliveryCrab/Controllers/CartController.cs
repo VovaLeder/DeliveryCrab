@@ -42,7 +42,7 @@ namespace DeliveryCrab.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (_context.Carts.Any(x => x.Productid == cart.Productid))//если запись в корзине с этим продуктом есть, то увеличиваем количество на 1
+                if (_context.Carts.Any(x => x.Productid == cart.Productid)) //если запись в корзине с этим продуктом есть, то увеличиваем количество на 1
                 {
                     Cart old_cart = _context.Carts.First(x => x.Productid == cart.Productid);
                     old_cart.Count = old_cart.Count + 1;
