@@ -46,8 +46,7 @@ namespace DeliveryCrab.Models
                     new Product {Id = 7, Name="Красти Пицца", Image=ai+"krusty_pizza.png", Price=3.00F,Description="Красти пицца с 7 кусочками сочной пепперони и грибами",Restaurantid=1},
                     new Product {Id = 8, Name="Красти Кидс Мил", Image=ai+"krusty_kids_meal.png", Price=1.99F,Description="Это коробочка содержащая пищу немного меньшего размера и игрушку.",Restaurantid=1},
                     new Product {Id = 9, Name="Кусочки кораллов", Image=ai+"coral_bits.png",Price=1.95F,Description="Маленькие кусочки розовых кораллов",Restaurantid=1},
-                    new Product {Id =10, Name="Ультра Крабби Суприм Кинг-сайз", Image=ai+"ksuks.png", Price=2.99F, Description="Более крупный крабсбургер на палочке, дважды обжаренный в кляре",Restaurantid=1}
-                }
+                    }
                 );
 
         }
