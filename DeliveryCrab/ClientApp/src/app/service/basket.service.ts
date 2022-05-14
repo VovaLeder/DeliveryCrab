@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Basket } from '../models/basket';
+import { UserService } from './user.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,15 +11,18 @@ export class BasketService {
   basket:Basket = new Basket();
   sum:number = 0;
   empty:boolean = true;
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, public userService:UserService) { }
   loadBasket(){
     this.getBasket()
       .subscribe((data:any)=>{
         this.baskets = data as Basket[]
         this.sum = 0;
         for (let o of this.baskets){
-          this.sum+=o.cost!;
-          this.sum = Math.round(this.sum*100)/100;
+          if(o.userid === this.userService.log_user.id){
+            this.sum+=o.cost!;
+            this.sum = Math.round(this.sum*100)/100;
+          }
+
         }
         if(this.sum != 0){
           this.empty = false;

@@ -2,13 +2,15 @@
   <h1>Корзина</h1>
   <div *ngIf="!basketService.empty">
     <div class="basket" *ngFor="let b of basketService.baskets">
-      <ng-template [ngIf]="basketService.basket?.id != b.id" [ngIfElse]="edit">
-        <h2>{{b.productname}}</h2>
-        <h2>- {{b.count}} шт.</h2>
-        <h2>&nbsp;по {{b.price}}$</h2>
-        <button type="submit" (click)="delete(b)">Удалить из корзины</button>
-        <button type="submit" (click)="editCount(b)">Изменить кол-во</button>
-      </ng-template>
+      <div class="basket" *ngIf="b.userid == userService.log_user.id">
+        <ng-template [ngIf]="basketService.basket?.id != b.id" [ngIfElse]="edit">
+          <h2>{{b.productname}}</h2>
+          <h2>- {{b.count}} шт.</h2>
+          <h2>&nbsp;по {{b.price}}$</h2>
+          <button type="submit" (click)="delete(b)">Удалить из корзины</button>
+          <button type="submit" (click)="editCount(b)">Изменить кол-во</button>
+        </ng-template>
+      </div>
     </div>
     <h2>Общая сумма = {{basketService.sum}}$</h2>
     <label for="address"><h2>Введите адрес</h2></label>

@@ -9,7 +9,7 @@
 </tr>
 <ng-template #edit>
   <h1>Заказ № {{orderService.order.id}}-{{orderService.order.description}}, стоимость {{orderService.order.price}}</h1>
-  <h2>Адрес {{orderService.order.address}}, дата {{orderService.order.data?.getDay}}</h2>
+  <h2>Адрес {{orderService.order.address}}, дата {{orderService.order.data}}</h2>
   <select [(ngModel)]="orderService.order.status" name="status" class="select">
     <option value="Сформирован">Сформирован</option>
     <option value="Готовится">Готовится</option>
