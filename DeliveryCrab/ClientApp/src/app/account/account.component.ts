@@ -37,7 +37,8 @@ export class AccountComponent implements OnInit {
       age: ['',[
         Validators.required,
         Validators.min(0),
-        Validators.max(100)
+        Validators.max(100),
+        Validators.pattern(/^[0-9]+(?!.)/)
       ]],
       email: ['',[
         Validators.required,
