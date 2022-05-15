@@ -40,7 +40,8 @@ export class RegisterComponent implements OnInit {
       age: ['',[
         Validators.required,
         Validators.min(0),
-        Validators.max(100)
+        Validators.max(100),
+        Validators.pattern(/^[0-9]+(?!.)/)
       ]],
       login: ['',[
         Validators.required
