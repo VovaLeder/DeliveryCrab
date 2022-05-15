@@ -28,13 +28,13 @@ namespace DeliveryCrab.Controllers
             return basket;
         }
 
-        [HttpGet]
-        [Route("{UserId}")]
-        public Cart GetByUserId(int UserId)
-        {
-            Cart? basket = _context.Carts.FirstOrDefault(x => x.Userid == UserId);
-            return basket;
-        }
+        //[HttpGet]
+        //[Route("{UserId}")]
+        //public Cart GetByUserId(int UserId)
+        //{
+        //    Cart? basket = _context.Carts.FirstOrDefault(x => x.Userid == UserId);
+        //    return basket;
+        //}
 
         [HttpPost]
         [Route("PostCart")]
@@ -42,9 +42,9 @@ namespace DeliveryCrab.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (_context.Carts.Any(x => x.Productid == cart.Productid)) //если запись в корзине с этим продуктом есть, то увеличиваем количество на 1
+                if (_context.Carts.Any(x => (x.Productid == cart.Productid) && (x.Userid == cart.Userid))) //если запись в корзине с этим продуктом есть, то увеличиваем количество на 1
                 {
-                    Cart old_cart = _context.Carts.First(x => x.Productid == cart.Productid);
+                    Cart old_cart = _context.Carts.First(x => (x.Productid == cart.Productid) && (x.Userid == cart.Userid));
                     old_cart.Count = old_cart.Count + 1;
                     old_cart.Cost = old_cart.Price * old_cart.Count;
                     _context.SaveChanges();

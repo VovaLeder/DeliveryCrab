@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Basket } from '../models/basket';
 import { Order } from '../models/order';
 import { BasketService } from '../service/basket.service';
@@ -18,14 +19,35 @@ export class BasketComponent implements OnInit {
   description:string = '';
   success:boolean = false;
   test:number|undefined = 0;
+  formsEdit!:FormGroup;
 
-  constructor(public basketService:BasketService, public orderService:OrderService,
+  constructor(public basketService:BasketService,private fb: FormBuilder, public orderService:OrderService,
     public userService:UserService) {}
   ngOnInit(){
     this.basketService.loadBasket();
     this.orderService.loadOrder();
+    this.initForm();
   }
+  initForm(){
+    this.formsEdit = this.fb.group({
+      address:['',[
+        Validators.required
+      ]]
+    });
+  }
+
+  isControlInvalid(controlName: string): boolean {
+    const control = this.formsEdit.controls[controlName];
+    const result = control.invalid && control.touched;
+      return result;
+    }
   placeAnOrder(){
+    const control = this.formsEdit.controls;
+      if(this.formsEdit.invalid){
+        Object.keys(control)
+        .forEach(controlName => control[controlName].markAsTouched());
+        return;
+      }
     for(let b of this.basketService.baskets){
       this.id_list.push(b.id)
       this.products.push(b.productname);

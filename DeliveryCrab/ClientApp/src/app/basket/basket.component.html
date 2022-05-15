@@ -1,23 +1,30 @@
-<div class="container" *ngIf="!success">
-  <h1>Корзина</h1>
-  <div *ngIf="!basketService.empty">
-    <div class="basket" *ngFor="let b of basketService.baskets">
-      <div class="basket" *ngIf="b.userid == userService.log_user.id">
-        <ng-template [ngIf]="basketService.basket?.id != b.id" [ngIfElse]="edit">
-          <h2>{{b.productname}}</h2>
-          <h2>- {{b.count}} шт.</h2>
-          <h2>&nbsp;по {{b.price}}$</h2>
-          <button type="submit" (click)="delete(b)">Удалить из корзины</button>
-          <button type="submit" (click)="editCount(b)">Изменить кол-во</button>
-        </ng-template>
+
+  <div class="container" *ngIf="!success">
+    <form [formGroup]="formsEdit">
+    <h1>Корзина</h1>
+    <div *ngIf="!basketService.empty">
+      <div class="basket" *ngFor="let b of basketService.baskets">
+        <div class="basket" *ngIf="b.userid == userService.log_user.id">
+          <ng-template [ngIf]="basketService.basket?.id != b.id" [ngIfElse]="edit">
+            <h2>{{b.productname}}</h2>
+            <h2>- {{b.count}} шт.</h2>
+            <h2>&nbsp;по {{b.price}}$</h2>
+            <button type="submit" (click)="delete(b)">Удалить из корзины</button>
+            <button type="submit" (click)="editCount(b)">Изменить кол-во</button>
+          </ng-template>
+        </div>
       </div>
+      <h2>Общая сумма = {{basketService.sum}}$</h2>
+      <label for="address"><h2>Введите адрес</h2></label>
+      <textarea type="text" formControlName="address" [(ngModel)]="orderService.order.address" name="address" class="form-control" id="address"></textarea>
+      <div class="error" *ngIf="isControlInvalid('address')">
+        Введите адрес
+      </div>
+      <button type="submit" (click)="placeAnOrder()">Оформить заказ</button>
     </div>
-    <h2>Общая сумма = {{basketService.sum}}$</h2>
-    <label for="address"><h2>Введите адрес</h2></label>
-    <textarea type="text" [(ngModel)]="orderService.order.address" name="address" class="form-control" id="address"></textarea>
-    <button type="submit" (click)="placeAnOrder()">Оформить заказ</button>
+  </form>
   </div>
-</div>
+
 <ng-template #edit>
   <h2>{{basketService.basket?.productname}}</h2>
   <input type="number" [(ngModel)]="basketService.basket.count" name="count" min="1" step="1">
