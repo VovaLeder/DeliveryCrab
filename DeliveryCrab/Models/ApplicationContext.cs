@@ -11,6 +11,7 @@ namespace DeliveryCrab.Models
         public ApplicationContext(DbContextOptions<ApplicationContext> options)
             : base(options)
         {
+            
             try
             {
                 Database.EnsureCreated();
